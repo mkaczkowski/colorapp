@@ -4,7 +4,7 @@ angular.module('colorappApp')
 
             var timeout;
             var lvl = 0;
-            var lvls = {0: 15, 2: 10, 3: 8, 4: 7, 5: 5, 7: 4, 10:3, 15: 2} //lvl : secs
+            var lvls = {0: 90, 2: 10, 3: 8, 4: 7, 5: 5, 7: 4, 10:3, 15: 2} //lvl : secs
 
             var button_modes = [ "full", "label" ]
             var guess_modes = [ "color", "word" ]

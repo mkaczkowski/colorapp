@@ -60,3 +60,54 @@
 .pie-red {
 	border: 4px #ff000b solid;
 }
+
+/*BIG TIMER*/
+.radialtimer2 {
+	width: 60px;
+	height: 60px;
+	position: relative;
+}
+/* line 18, ../../build/scss/radialtimer.scss */
+.radialtimer2 .n {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	background: transparent;
+	border: solid #8c8c8c 2px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 56px;
+	font-size: 28px;
+	color: #d6d6d6;
+}
+/* line 31, ../../build/scss/radialtimer.scss */
+.radialtimer2 .slice {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	clip: rect(0px, 60px, 60px, 30px);
+}
+/* line 37, ../../build/scss/radialtimer.scss */
+.radialtimer2 .slice.nc {
+	clip: rect(auto, auto, auto, auto);
+}
+/* line 41, ../../build/scss/radialtimer.scss */
+.radialtimer2 .slice .q {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	border: 4px transparent solid;
+	border-radius: 50%;
+	clip: rect(0px, 30px, 30px, 0px);
+	z-index: 2;
+}
+/* line 51, ../../build/scss/radialtimer.scss */
+.radialtimer2 .slice .pie {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	clip: rect(0px, 30px, 60px, 0px);
+	border-radius: 50%;
+	transition: all 1s linear;
+	z-index: 1;
+}
