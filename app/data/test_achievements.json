@@ -1,0 +1,78 @@
+
+{
+  "rewards": [
+    {
+      "badge_urls": null,
+      "description": null,
+      "name": null,
+      "og_description": null,
+      "progress": null,
+      "share_description": null,
+      "slug": "beginner",
+      "sticker_url": null,
+      "title": "Beginner",
+      "topic_slug": "sports-general-7",
+      "unlocked": true,
+      "unlocked_description": null
+    },
+    {
+      "badge_urls": {
+        "large": "https://quizup.s3.amazonaws.com/badges/badge_Plays-Novice.png",
+        "small": "https://quizup.s3.amazonaws.com/badges/small-badge_Plays-Novice.png"
+      },
+      "description": "Ready to leave the nest? Play two games to unlock this chic achievement.",
+      "name": "Novice",
+      "og_description": "Play two matches to unlock the Novice achievement.",
+      "progress": null,
+      "share_description": "Taking off! I just unlocked the Novice achievement in #QuizUp!",
+      "slug": "56",
+      "sticker_url": null,
+      "title": "Novice",
+      "topic_slug": null,
+      "unlocked": true,
+      "unlocked_description": "Congratulations on your first title! You can unlock more exciting titles by reaching level 10 in any topic. Fly through the topics to build a collection of cool and expressive titles."
+    },
+    {
+      "badge_urls": {
+        "large": "https://quizup.s3.amazonaws.com/badges/badge_Legionary.png",
+        "small": "https://quizup.s3.amazonaws.com/badges/small-badge_Legionary.png"
+      },
+      "description": "Win 100 matches to unlock the Legionary and start your accession up the ranks.",
+      "name": "Legionary",
+      "og_description": "100 wins will unlock the Legionary achievement.",
+      "progress": {
+        "end": 100,
+        "start": 20
+      },
+      "share_description": "I just won 100 matches in #QuizUp and unlocked the Legionary achievement! Top that!",
+      "slug": "1",
+      "sticker_url": null,
+      "title": null,
+      "topic_slug": null,
+      "unlocked": false,
+      "unlocked_description": "You just won your 100th match. You can take off your galea and lay down your pilum and relax for a while. Well done!"
+    },
+
+    {
+      "badge_urls": {
+        "large": "https://quizup.s3.amazonaws.com/badges/badge_Wins-ThePunisher.png",
+        "small": "https://quizup.s3.amazonaws.com/badges/small-badge_Wins-ThePunisher.png"
+      },
+      "description": "Winning 50 rematches will unlock this achievement. A training montage really helps.",
+      "name": "The Punisher",
+      "og_description": "Winning 50 rematches will unlock the The Punisher.",
+      "progress": {
+        "end": 50,
+        "start": 0
+      },
+      "share_description": "I just won 50 rematches in #QuizUp! You know, revenge is really great!",
+      "slug": "10",
+      "sticker_url": null,
+      "title": null,
+      "topic_slug": null,
+      "unlocked": false,
+      "unlocked_description": "You just won 50 rematches! You're the best around. Well done, kid."
+    },
+
+  ]
+}

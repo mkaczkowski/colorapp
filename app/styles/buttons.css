@@ -1,0 +1,202 @@
+
+/* Button - these styles are the good stuff */
+
+.buttoner {
+	background-color: transparent;
+	background-image: -webkit-linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,0%,.1));
+	background-image:    -moz-linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,0%,.1));
+	background-image:     -ms-linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,0%,.1));
+	background-image:      -o-linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,0%,.1));
+	background-image:         linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,0%,.1));
+	border: none;
+	border-radius: .5em;
+	box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.2),
+	inset 0 2px 0 hsla(0,0%,100%,.1),
+	inset 0 1.2em 0 hsla(0,0%,100%,0.1),
+	inset 0 -.2em 0 hsla(0,0%,100%,.1),
+	inset 0 -.25em 0 hsla(0,0%,0%,.25),
+	0 .25em .25em hsla(0,0%,0%,.05);
+	color: #393939;
+	cursor: pointer;
+	display: inline-block;
+	font-family: GothamMedium;
+	font-size: 1.3em;
+	line-height: 1.5;
+	margin: 0 .5em 1em;
+	padding: .75em 1.5em 1em;
+	position: relative;
+	text-decoration: none;
+	vertical-align: middle;
+	-webkit-transform: rotate(-0.0000000001deg);
+	transform: rotate(-0.0000000001deg);
+}
+.buttoner:hover {
+	outline: none;
+}
+.buttoner:hover,
+.buttoner:focus {
+	box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.2),
+	inset 0 2px 0 hsla(0,0%,100%,.1),
+	inset 0 1.2em 0 hsla(0,0%,100%,.1),
+	inset 0 -.2em 0 hsla(0,0%,100%,.1),
+	inset 0 -.25em 0 hsla(0,0%,0%,.25),
+	inset 0 0 0 3em hsla(0,0%,100%,.2),
+	0 .25em .25em hsla(0,0%,0%,.05);
+}
+.buttoner:active {
+	box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.2),
+	inset 0 2px 0 hsla(0,0%,100%,.1),
+	inset 0 1.2em 0 hsla(0,0%,100%,.1),
+	inset 0 0 0 3em hsla(0,0%,100%,.2),
+	inset 0 .25em .5em hsla(0,0%,0%,.05),
+	0 -1px 1px hsla(0,0%,0%,.1),
+	0 1px 1px hsla(0,0%,100%,.25);
+	margin-top: .25em;
+	outline: none;
+	/*padding-bottom: .5em;*/
+}
+
+/* Light Text */
+
+.lightText {
+	box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.25),
+	inset 0 2px 0 hsla(0,0%,100%,.1),
+	inset 0 1.2em 0 hsla(0,0%,100%,.05),
+	inset 0 -.2em 0 hsla(0,0%,100%,.1),
+	inset 0 -.25em 0 hsla(0,0%,0%,.5),
+	0 .25em .25em hsla(0,0%,0%,.1);
+	color: #fff;
+	text-shadow: 0 -1px 1px hsla(0,0%,0%,.25);
+}
+.lightText:hover,
+.lightText:focus {
+	box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.25),
+	inset 0 2px 0 hsla(0,0%,100%,.1),
+	inset 0 1.2em 0 hsla(0,0%,100%,.05),
+	inset 0 -.2em 0 hsla(0,0%,100%,.1),
+	inset 0 -.25em 0 hsla(0,0%,0%,.5),
+	inset 0 0 0 3em hsla(0,0%,100%,.2),
+	0 .25em .25em hsla(0,0%,0%,.1);
+}
+.lightText:active {
+	box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.25),
+	inset 0 2px 0 hsla(0,0%,100%,.1),
+	inset 0 1.2em 0 hsla(0,0%,100%,.05),
+	inset 0 0 0 3em hsla(0,0%,100%,.2),
+	inset 0 .25em .5em hsla(0,0%,0%,.05),
+	0 -1px 1px hsla(0,0%,0%,.1),
+	0 1px 1px hsla(0,0%,100%,.25);
+}
+
+/* Large */
+
+.large {
+	font-size: 1.25em;
+}
+
+/* Medium */
+
+.medium {
+	font-size: 1em;
+}
+
+/* Small */
+
+.small {
+	font-size: .75em;
+}
+
+/* Regular */
+
+.regular {
+	border-radius: .5em;
+}
+
+/* Square */
+
+.square {
+	border-radius: .25em;
+}
+
+/* Round */
+
+.round {
+	border-radius: 1.25em;
+}
+
+/*BUTTON COLOR*/
+.red-full {
+	background-color: rgba(255, 49, 30, 0.89);
+}
+.orange-full {
+	background-color: rgba(239, 156, 33, 0.94);
+}
+.yellow-full {
+	background-color: rgba(249, 249, 0, 0.9);
+}
+.green-full {
+	background-color: #7DBD38;
+}
+.blue-full {
+	background-color: #339FE4;
+}
+.purple-full {
+	background-color: #967ADC;
+}
+.pink-full {
+	background-color: #d770ad;
+}
+.white-full {
+	background-color: #f6f6f6;
+}
+.grey-full {
+	background-color: #6E7072;
+}
+.transparent-full {
+	background-color: transparent; /* Set the button color here */
+}
+
+/*WORD*/
+.red-label {
+	color: #ff3321;
+}
+.orange-label {
+	color: rgba(239, 156, 33, 0.94);
+}
+
+.yellow-label {
+	color: rgba(249, 249, 0, 0.9);
+}
+
+.green-label {
+	color: #7DBD38;
+}
+.blue-label {
+	color: #339FE4;
+}
+.purple-label {
+	color: #967ADC;
+}
+.pink-label {
+	color: #d770ad;
+}
+.white-label {
+	color: #f6f6f6;
+}
+.grey-label {
+	color: #6E7072;
+}
+
+/*success*/
+.success {
+	background-color: #7DBD38 !important;
+	color:#444 !important;
+}
+.failure {
+	background-color: #ff3321 !important;
+	color:#444 !important;
+}
+.neutral {
+	background-color: transparent !important;
+	color: #444 !important;
+}

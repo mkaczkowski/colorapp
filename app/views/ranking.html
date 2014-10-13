@@ -1,0 +1,47 @@
+<!--<input ng-model="score" style="width: 100px">
+<button ng-click="goBack()">&lt;-</button>
+<button ng-click="addScore(score)">ADD</button>
+<button ng-click="getScores()">REFRESH</button>-->
+
+<button class="button icon-left ion-chevron-left button-clear button-light" style="position: absolute; top: -17px; left: -3px;" ng-click="goBack()"></button>
+
+<div style="background-color: transparent; color: #f5f5f5; height: 100%; width: 100%">
+
+	<div style="text-align: center; width: 100%">
+		<div class="logo box cutout" style="margin: 0px auto; width: 6em; height: 6em;" >
+			<span class="image-wrap" style="width:100%; height:100%;  display:inline-block; background: url('{{user.picture}}') no-repeat scroll center center / 100% 100% white;"> </span>
+		</div>
+		<p style="font-size: 1.5em; padding-top: 0.5em;margin-bottom: 0.2em;">{{user.name}}</p>
+		<div style="font-size: 1.1em" ng-show="user.id != 'guest'">
+			<p>Best score: <b style="font-size: 1.1em">{{user.score}}</b></p>
+		</div>
+	</div>
+
+	<div>
+		<span class="line"></span>
+	</div>
+
+	<div style="position: absolute; left: 0px; right: 0px; bottom: 0px; top: 11em">
+
+		<div style="text-align: center;">
+			<button class="button icon-left ion-skip-backward button-clear button-light" style="font-size: 0.9em;" ng-click="prevWeek()"></button>
+			<button class="button button-clear button-light" style="font-size: 1em; " ng-click="thisWeek()">{{weekLabel}}</button>
+			<button class="button icon-right ion-skip-forward button-clear button-light" style="font-size: 0.9em;"  ng-show="!isCurrentWeek" ng-click="nextWeek()"></button>
+		</div>
+
+		<ion-scroll zooming="false" direction="y" style="position: absolute;  bottom: 0; top: 3.5em; right: 0; left: 0">
+			<ul class="ranking" style="border-radius: 10px; color: #f5f5f5;width: 100%; padding: 0 10px">
+				<li class="animate-repeat" ng-repeat="item in scores | orderBy:'score':true" style="height: 3em; line-height: 3em; margin-bottom: 0.6em">
+					<span class="counter">{{$index + 1}}</span>
+					<span class="title">{{item.name}}</span>
+				<span class="logo box cutout" style=" width: 3em; height: 3em; float: right" >
+				<span class="image-wrap score" ng-class="{'gold' : $index == 0, 'silver' : $index == 1, 'bronze' : $index == 2}">
+					<div>{{item.score}}</div>
+				</span>
+			</span>
+				</li>
+			</ul>
+		</ion-scroll>
+	</div>
+
+</div>

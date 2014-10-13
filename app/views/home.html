@@ -1,0 +1,28 @@
+<div class="bar bar-header bar-clear">
+</div>
+<ion-content  vertical-aligned style="position:absolute; width: 100%; top: 40px; bottom: 0px; margin: 0 auto; ">
+	<ul class="list buttonbar " style="max-width: 300px; margin: 0 auto">
+		<li class="item" ng-show="user.id" style="padding-bottom:1em">
+			<div class="logo box cutout" style="margin: 0px auto; width: 6em; height: 6em;" >
+				<span class="image-wrap" style="width:100%; height:100%;  display:inline-block; background: url('{{user.picture}}') no-repeat scroll center center / 100% 100% white;"> </span>
+			</div>
+			<p style="font-size: 1.3em; padding-top: 0.2em; margin-bottom: 0.3em; color:#cbcbcb;font-family: GothamMedium">{{user.name}}<button class="button-icon icon ion-power" ng-click="logout()" style="color: #8d8d8d; border: none"></button></p>
+		</li>
+		<li class="item">
+			<button class="button button-outline button-block button-rounded button-balanced  icon-left ion-game-controller-b"
+					style="text-align: left; " ng-click="play()">
+				<span style="padding-left: 10px;font-family: GothamMedium">PLAY</span>
+			</button>
+		</li>
+		<li class="item">
+			<button class="button button-outline button-block button-rounded button-royal  icon-left ion-person-stalker" style="text-align: left" ng-click="goToVersus()">
+				<span style="padding-left: 10px;font-family: GothamMedium">VERSUS</span>
+			</button>
+		</li>
+		<li class="item">
+			<button class="button button-outline button-block button-rounded button-energized  icon-left ion-trophy" style="text-align: left" ng-click="goToRanking()">
+				<span style="padding-left: 10px;font-family: GothamMedium">TOP 10</span>
+			</button>
+		</li>
+	</ul>
+</ion-content>

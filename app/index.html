@@ -1,0 +1,73 @@
+<!doctype html>
+<html class="no-js">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<!-- build:css(./) styles/vendor.css -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/ionic/css/ionic.css" />
+	<!-- endbower -->
+	<!-- endbuild -->
+	<!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="styles/auth.css">
+	<link rel="stylesheet" href="styles/buttons.css">
+	<link rel="stylesheet" href="styles/timer.css">
+	<link rel="stylesheet" href="styles/circle.css">
+	<link rel="stylesheet" href="styles/loading.css">
+	<!-- endbuild -->
+</head>
+<body ng-app="colorappApp">
+
+<img src="images/wallpaper.png" width="100%" height="100%">
+<div  style="position:absolute; top: 7px; bottom: 7px; left: 6px; right: 6px;">
+	<div id="navView" class="my-panel-pad" style="position:absolute;top: 0px; bottom: 0px; left: 0px; right: 0px; ">
+		<div class="slide-left-right"  style="position:absolute; top: 20px; bottom: 10px; left: 10px; right: 10px;" ui-view>
+
+		</div>
+	</div>
+</div>
+
+<!-- build:js(./) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jQuery/dist/jquery.js"></script>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/json3/lib/json3.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/collide/collide.js"></script>
+<script src="bower_components/ionic/js/ionic.js"></script>
+<script src="bower_components/ionic/js/ionic-angular.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/firebase/firebase.js"></script>
+<script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/config/config.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/home.js"></script>
+<script src="scripts/controllers/auth.js"></script>
+<script src="scripts/controllers/quiz.js"></script>
+<script src="scripts/controllers/ranking.js"></script>
+<script src="scripts/directives/verticalaligned.js"></script>
+<script src="scripts/directives/colorbutton.js"></script>
+<script src="scripts/directives/colorbuttoncontainer.js"></script>
+<script src="scripts/directives/colorbuttoncontainerwrapper.js"></script>
+<script src="scripts/services/remoteservice.js"></script>
+<script src="scripts/services/timer.service.js"></script>
+<script src="scripts/services/modal.service.js"></script>
+<script src="scripts/services/score.service.js"></script>
+<script src="scripts/services/auth.service.js"></script>
+<script src="scripts/utils/timer/radialtimer.js"></script>
+<!-- endbuild -->
+</body>
+</html>

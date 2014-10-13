@@ -1,0 +1,62 @@
+/* line 10, ../../build/scss/radialtimer.scss */
+.radialtimer {
+	width: 40px;
+	height: 40px;
+	position: relative;
+}
+/* line 18, ../../build/scss/radialtimer.scss */
+.radialtimer .n {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	background: transparent;
+	border: solid #8c8c8c 2px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 38px;
+	font-size: 18px;
+	color: #d6d6d6;
+}
+/* line 31, ../../build/scss/radialtimer.scss */
+.radialtimer .slice {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	clip: rect(0px, 40px, 40px, 20px);
+}
+/* line 37, ../../build/scss/radialtimer.scss */
+.radialtimer .slice.nc {
+	clip: rect(auto, auto, auto, auto);
+}
+/* line 41, ../../build/scss/radialtimer.scss */
+.radialtimer .slice .q {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border: 4px transparent solid;
+	border-radius: 50%;
+	clip: rect(0px, 20px, 20px, 0px);
+	z-index: 2;
+}
+/* line 51, ../../build/scss/radialtimer.scss */
+.radialtimer .slice .pie {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	clip: rect(0px, 20px, 40px, 0px);
+	border-radius: 50%;
+	transition: all 1s linear;
+	z-index: 1;
+}
+
+.pie-green {
+	border: 4px #6bc967 solid;
+}
+
+.pie-orange {
+	border: 4px #c57000 solid;
+}
+
+.pie-red {
+	border: 4px #ff000b solid;
+}

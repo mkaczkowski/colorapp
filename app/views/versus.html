@@ -1,0 +1,56 @@
+<div style="position: absolute;clear: both; z-index: 100; top: 50%;">
+	<button class="button icon-left ion-chevron-left button-clear button-light" ng-click="goBack()"></button>
+	<button ng-click="nextGuess()">RESET</button>
+	<button ng-click="newGame()">NEW GAME</button>
+</div>
+
+<!--PLAYER1-->
+<color-button-container-wrapper quizid="quiz1" guess="guess" words="words" colors="colors"
+								style="transform: rotate(180deg);-webkit-transform:rotate(180deg);position: absolute; top: 10px; left: 0px; right: 0px">
+</color-button-container-wrapper>
+
+<!--BAR-->
+<div style="position: absolute; top: 40%; width: 100%; height: 60px; text-align: center; ">
+	<div class='radialtimer' id='timer' style="transform: rotate(90deg);-webkit-transform:rotate(90deg);"></div>
+
+	<div style="color: white">
+		<div style="transform: rotate(180deg);-webkit-transform:rotate(180deg);">{{points['quiz1']}}</div>
+		<div style="transform: rotate(90deg);-webkit-transform:rotate(90deg);"> : </div>
+		<div>{{points['quiz2']}}</div>
+	</div>
+</div>
+
+<!--PLAYER2-->
+<color-button-container-wrapper quizid="quiz2" guess="guess" words="words" colors="colors" style="position: absolute; bottom: 20px; left: 0px; right: 0px">
+</color-button-container-wrapper>
+
+<!--MODALS-->
+<script id="versus-modal.html" type="text/ng-template">
+	<ion-modal-view>
+		<ion-header-bar>
+			<h1 class="title">GAME OVER</h1>
+		</ion-header-bar>
+		<ion-content>
+			<!--SCORE-->
+			<div style="text-align: center">
+				<p>Your score: {{points['quiz1']}}</p>
+				<p>Your score: {{points['quiz2']}}</p>
+			</div>
+			<div style="text-align: center">
+				<button ng-click="remach()">Remach</button>
+				<button ng-click="goBack()">Back to home</button>
+			</div>
+		</ion-content>
+	</ion-modal-view>
+</script>
+
+<script id="tutorial-versus-modal.html" type="text/ng-template">
+	<ion-modal-view>
+		<ion-content>
+			TUTORIAL2
+			<div style="text-align: center">
+				<button ng-click="hideTutorial();newGame()">CONTINUE</button>
+			</div>
+		</ion-content>
+	</ion-modal-view>
+</script>
