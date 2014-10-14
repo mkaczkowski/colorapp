@@ -35,7 +35,7 @@ angular.module('colorappApp')
                             $scope.points[quizId] = points + parseInt(timeLeft) + 1;
                         }
                 );
-                $timeout($scope.nextGuess, 500);
+                $timeout($scope.nextGuess, 100);
             })
 
             $scope.$on('failure',function (event, quizId) {
@@ -97,7 +97,7 @@ angular.module('colorappApp')
                 }
 
                 //TODO REFACTOR
-                $timeout(function(){ $scope.$broadcast('newquiz',{}); });
+                $timeout(function(){ $scope.$broadcast('newquiz',{}); }, 1000);
 //             INIT
                 timerService.startTimer(timeout, $scope.timeIsOut);
                 isActive = true;
@@ -159,5 +159,5 @@ angular.module('colorappApp')
                 });
             };
 
-            $timeout($scope.newGame, 100);
+            $timeout($scope.newGame, 500);
         })

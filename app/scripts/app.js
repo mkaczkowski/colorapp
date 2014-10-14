@@ -52,7 +52,6 @@ angular
                         controller: 'RankingCtrl'
                     })
 
-            $routeProvider.otherwise('/home');
             $urlRouterProvider.otherwise('/home');
 
         })
@@ -90,6 +89,7 @@ angular
             });
 
             $rootScope.goBack = function(){
+                console.info("goBack:"+$state.current.name);
                 if ($state.current.name == 'home'){
                     navigator.app.exitApp();
                 } else {
@@ -109,7 +109,10 @@ angular
             }
 
             $ionicPlatform.registerBackButtonAction(function () {
+                console.info("registerBackButtonAction");
                 $rootScope.goBack();
             }, 100);
+
+//            document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
         })
 

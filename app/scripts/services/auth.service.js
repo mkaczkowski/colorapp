@@ -7,11 +7,11 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
 
     var currentUser = { };
 
-/*var currentUser = { //TEST
-        id : "facebook:10204218045444165",
-        name : "Mariusz",
-        score :
-    };*/
+    /*var currentUser = { //TEST
+     id : "facebook:10204218045444165",
+     name : "Mariusz",
+     score :
+     };*/
 
     /*SIMPLE LOGIN*/
     this.createSimpleUser= function(user, callback) {
@@ -65,26 +65,49 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
 
     /*FACEBOOK LOGIN*/
     this.loginFacebook = function (callback) {
-        fbRef.authWithOAuthPopup("facebook", function(error, authData) {
-            if (error === null && authData) {
-                console.log("User ID: " + authData.uid + ", Provider: " + authData.provider);
 
-                fbRef.child(authData.uid).once('value', function (snap) {
-                    var storedUser = snap.val();
-                    if(storedUser){
-                        saveUser(storedUser, callback);
-                    }else{
-                        saveUser(createFBUser(authData), callback);
+        fbRef.authWithOAuthPopup("facebook", function(err, authData) {
+                    if (err) {
+                        if (err.code === "TRANSPORT_UNAVAILABLE") {
+                            fbRef.authWithOAuthRedirect("facebook", authedUser);
+                        }else{
+                            callback(err)
+                        }
+                    } else if (authData) {
+                        authedUser(null,authData)
                     }
+                }
+                ,{
+                    remember: "never"
                 });
-            } else {
-                console.log("Error authenticating user:", error);
-                callback(error)
-            }
-        },{
-            remember: "never"
-        });
+
+
+        /* fbRef.authWithOAuthPopup("facebook", function(error, authData) {
+         if (error === null && authData) {
+         console.log("User ID: " + authData.uid + ", Provider: " + authData.provider);
+         } else {
+         console.log("Error authenticating user:", error);
+         callback(error)
+         }
+         },{
+         remember: "never"
+         });*/
     };
+
+    function authedUser(err, authData) {
+        if (err === null && authData) {
+            fbRef.child(authData.uid).once('value', function (snap) {
+                var storedUser = snap.val();
+                if (storedUser) {
+                    saveUser(storedUser, callback);
+                } else {
+                    saveUser(createFBUser(authData), callback);
+                }
+            })
+        }else{
+            callback(err)
+        }
+    }
 
     function createFBUser(authData){
         var newUser = {
@@ -150,8 +173,18 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
 
     /*OTHER*/
     this.logout = function(callback) {
+        if(currentUser.id != "guest"){
+            fbRef.unauth(function(){
+                if( window.cookies){
+                    window.cookies.clear(function() {
+                        console.log("Cookies cleared!");
+                    });
+                }
+            });
+        }
+
         currentUser = { };
-        fbRef.unauth(callback);
+        callback();
     }
 
     this.getUser = function() {

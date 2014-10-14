@@ -17,6 +17,8 @@
 body{
 	/*background-image: url("images/wallpaper.png");*/
 	font-family: Gotham;
+	-webkit-transform: translate3d(0px,0px,0px);
+	transform: translate3d(0px,0px,0px);
 }
 
 .tableWrapper {
@@ -80,8 +82,7 @@ body{
 	border-radius: 5px;
 }
 
-
-
+/*
 .my-panel {
 	margin:0px;
 	padding:20px 10px 10px 10px;
@@ -140,6 +141,7 @@ body{
 	width:auto;
 	height: auto;
 }
+*/
 
 /*RANKING*/
 ul.ranking  {
