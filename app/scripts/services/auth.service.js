@@ -82,6 +82,21 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
                 });
 
 
+        function authedUser(err, authData) {
+            if (err === null && authData) {
+                fbRef.child(authData.uid).once('value', function (snap) {
+                    var storedUser = snap.val();
+                    if (storedUser) {
+                        saveUser(storedUser, callback);
+                    } else {
+                        saveUser(createFBUser(authData), callback);
+                    }
+                })
+            }else{
+                callback(err)
+            }
+        }
+
         /* fbRef.authWithOAuthPopup("facebook", function(error, authData) {
          if (error === null && authData) {
          console.log("User ID: " + authData.uid + ", Provider: " + authData.provider);
@@ -93,21 +108,6 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
          remember: "never"
          });*/
     };
-
-    function authedUser(err, authData) {
-        if (err === null && authData) {
-            fbRef.child(authData.uid).once('value', function (snap) {
-                var storedUser = snap.val();
-                if (storedUser) {
-                    saveUser(storedUser, callback);
-                } else {
-                    saveUser(createFBUser(authData), callback);
-                }
-            })
-        }else{
-            callback(err)
-        }
-    }
 
     function createFBUser(authData){
         var newUser = {

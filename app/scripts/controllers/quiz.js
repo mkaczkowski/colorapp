@@ -35,7 +35,7 @@ angular.module('colorappApp')
                             $scope.points[quizId] = points + parseInt(timeLeft) + 1;
                         }
                 );
-                $timeout($scope.nextGuess, 100);
+                $timeout($scope.nextGuess, 600);
             })
 
             $scope.$on('failure',function (event, quizId) {
@@ -51,7 +51,7 @@ angular.module('colorappApp')
                                     points = $scope.points['quiz1'];
                                     $scope.points['quiz1'] = points + timeLeft + 1;
                                 }
-                                $timeout($scope.nextGuess, 500);
+                                $timeout($scope.nextGuess, 800);
                             }
                     );
                 }else{
@@ -68,10 +68,14 @@ angular.module('colorappApp')
                 $scope.showFailure()
             }
 
-            $scope.nextGuess = function(_guess_mode, _button_mode){
-                angular.element(document.getElementById("quiz")).empty();
+            function clearPanels() {
+                angular.element(document.getElementById("quiz1")).empty();
                 angular.element(document.getElementById("quiz2")).empty();
                 $scope.buttons = [];
+            }
+
+            $scope.nextGuess = function(_guess_mode, _button_mode){
+                clearPanels();
 
 //            MODE
                 var guess_mode = _guess_mode ? _guess_mode :_.sample(guess_modes);
@@ -97,7 +101,7 @@ angular.module('colorappApp')
                 }
 
                 //TODO REFACTOR
-                $timeout(function(){ $scope.$broadcast('newquiz',{}); }, 1000);
+                $timeout(function(){ $scope.$broadcast('newquiz',{}); }, 100);
 //             INIT
                 timerService.startTimer(timeout, $scope.timeIsOut);
                 isActive = true;
