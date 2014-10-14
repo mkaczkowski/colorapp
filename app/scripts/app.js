@@ -18,7 +18,7 @@ angular
             'firebase',
             'colorappApp.config'
         ])
-        .config(function ($routeProvider, $stateProvider) {
+        .config(function ($urlRouterProvider, $stateProvider) {
 
             $stateProvider
                     .state('home', {
@@ -52,7 +52,8 @@ angular
                         controller: 'RankingCtrl'
                     })
 
-            $routeProvider.otherwise('home');
+            $routeProvider.otherwise('/home');
+            $urlRouterProvider.otherwise('/home');
 
         })
         .factory('loadingService', function($ionicLoading) {
@@ -75,12 +76,12 @@ angular
             };
 
             $ionicPlatform.ready(function() {
-                /* if(window.cordova && window.cordova.plugins.Keyboard) {
-                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-                 }
-                 if(window.StatusBar) {
-                 StatusBar.styleDefault();
-                 }*/
+                if(window.cordova && window.cordova.plugins.Keyboard) {
+                    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                }
+                if(window.StatusBar) {
+                    StatusBar.styleDefault();
+                }
 
                 /*    admobService.init();
                  $timeout(function(){
