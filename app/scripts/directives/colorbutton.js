@@ -9,15 +9,17 @@
 angular.module('colorappApp')
         .directive('colorButton', function () {
             return {
-                template: '<div class="{{position}}" style="width: 50%"> <button class="buttoner large regular button-block {{colorClass}}" data-color="{{color}}" data-word="{{word}}" style="margin: 0;width: 100%">{{word}}</button></div>',
+                template: '<div class="{{position}}" style="width: 50%"> <button class="buttoner large regular button-block {{colorClass}}" style="{{extra}}" data-color="{{color}}" data-word="{{word}}" style="margin: 0;width: 100%">{{word}}<span ng-transclude></span></button></div>',
                 restrict: 'E',
                 scope: {
                     position: "@position",
                     word: "@word",
                     color: "@color",
                     mode: "@mode",
+                    extra: "@extra",
                     callback: "&"
                 },
+                transclude:true,
                 controller: function($scope){
                     $scope.colorClass = $scope.color+"-"+$scope.mode
                 },

@@ -7,18 +7,14 @@
 				<button class="button button-outline button-block button-rounded button-positive  icon-left ion-social-facebook-outline"
 						style="text-align: left" ng-click="loginFacebook()">
 					<span ng-show="!workingOAuth" style="padding-left: 15px;font-family: GothamMedium">Sign In with Facebook</span>
-					<div class="loader" ng-show="workingOAuth" style="left: 0px;">
-						<div class="circle">&nbsp;</div>
-						<div class="circle">&nbsp;</div>
-						<div class="circle">&nbsp;</div>
+					<div ng-show="workingOAuth" style="text-align: center;">
+						<span class="icon ion-loading-c"></span>
 					</div>
 				</button>
 				<button class="button button-outline button-block button-rounded button-royal  icon-left ion-ios7-person-outline" style="text-align: left; margin-bottom: 0" ng-click="loginAsGuest()">
 					<span ng-show="!workingGuest" style="padding-left: 10px;font-family: GothamMedium">Play as a Guest</span>
-					<div class="loader" ng-show="workingGuest" style="left: -5px;">
-						<div class="circle">&nbsp;</div>
-						<div class="circle">&nbsp;</div>
-						<div class="circle">&nbsp;</div>
+					<div ng-show="workingGuest" style="text-align: center;">
+						<span class="icon ion-loading-c"></span>
 					</div>
 				</button>
 			</div>
@@ -45,12 +41,10 @@
 					</label>
 				</div>
 				<div class="button-wrapper"  style="margin-top: 10px;">
-					<button class="button button-outline button-rounded button-balanced" type="submit" ng-click="submitted = true" style="width: 150px;">
-						<span ng-show="!working" style=";font-family: GothamMedium">Create Account</span>
-						<div class="loader" ng-show="working" style="top:0px">
-							<div class="circle">&nbsp;</div>
-							<div class="circle">&nbsp;</div>
-							<div class="circle">&nbsp;</div>
+					<button class="button button-outline button-rounded button-balanced" type="submit" ng-click="submitted = true" style="width: 170px;">
+						<span style="font-family: GothamMedium;" ng-show="!working">Create Account</span>
+						<div ng-show="working" style="text-align: center;">
+							<span class="icon ion-loading-c"></span>
 						</div>
 					</button>
 					<button class="button icon-right ion-chevron-right button-clear button-light" style="font-size: 0.9em;font-family: GothamMedium" ng-click="isSigning = true">or log in</button>
@@ -69,12 +63,10 @@
 					</label>
 				</div>
 				<div class="button-wrapper"  style="margin-top: 10px;">
-					<button class="button button-outline button-rounded button-balanced icon-left ion-key" style="width: 150px;" type="submit" ng-click="submitted = true">
-						<span ng-show="!working" style=";font-family: GothamMedium">Sign In</span>
-						<div class="loader" ng-show="working" style="">
-							<div class="circle">&nbsp;</div>
-							<div class="circle">&nbsp;</div>
-							<div class="circle">&nbsp;</div>
+					<button class="button button-outline button-rounded button-balanced" style="width: 150px;" type="submit" ng-click="submitted = true">
+						<span style="font-family: GothamMedium"  ng-show="!working">Sign In</span>
+						<div ng-show="working" style="text-align: center;">
+							<span class="icon ion-loading-c"></span>
 						</div>
 					</button>
 					<button class="button icon-right ion-chevron-right button-clear button-light" style="font-size: 0.9em;font-family: GothamMedium" ng-click="isSigning = false">or sign up</button>
@@ -118,34 +110,15 @@
 
 		<div style="padding-top: 0.3em">
 			<span class="line"></span>
-			<span class="or" style="font-family: GothamMedium; font-size: 1.2em">HOW TO PLAY</span>
 		</div>
 
-		<div style="clear: both">
-			<div style="height: 35px;">
-				<span style="font-size: 1.2em;  line-height: 45px;">1. Select <b>COLOR</b> orange</span>
-				<span class="icon ion-checkmark-circled" style="font-size: 27px; color: #008000; position: relative; top: 3px;" ng-show="answer1 == true" ></span>
-				<span class="icon ion-minus-circled" style="font-size: 27px; color: #C50E0E; position: relative; top: 3px;" ng-show="answer1 == false"></span>
-			</div>
-			<div class="tableWrapper" style="width: 100%;padding-top: 5px;">
-				<color-button position="top-left" word="orange" color="white" mode="full" callback="badAnswer1()"></color-button>
-				<color-button position="top-right" word="white" color="orange" mode="full" callback="okAnswer1()"></color-button>
-			</div>
-		</div>
-		<div style="clear: both;padding-top: 0.2em">
-			<div style="height: 35px;">
-				<span style="font-size: 1.2em;  line-height: 45px;">2. Select <b>WORD</b> blue</span>
-				<span class="icon ion-checkmark-circled" style="font-size: 27px; color: #008000; position: relative; top: 3px;" ng-show="answer2 == true" ></span>
-				<span class="icon ion-minus-circled" style="font-size: 27px; color: #C50E0E; position: relative; top: 3px;" ng-show="answer2 == false"></span>
-			</div>
-			<div class="tableWrapper" style="width: 100%;padding-top: 5px;">
-				<color-button position="top-left" word="blue" color="purple" mode="full"  callback="okAnswer2()"></color-button>
-				<color-button position="top-right" word="purple" color="blue" mode="label"  callback="badAnswer2()"></color-button>
-			</div>
-		</div>
 		<div style="clear: both;padding-top: 0.3em">
-			<button class="button button-outline button-block button-rounded button-balanced icon-left ion-chevron-right"
-					style="font-family: GothamMedium" ng-click="goToQuiz()">PLAY</button>
+			<button class="button button-outline button-block button-rounded button-positive icon-left ion-help-circled" ng-click="goToHowPlay()">
+				<span style="padding-left: 10px;font-family: GothamMedium">HOW TO PLAY</span>
+			</button>
+			<button class="button button-outline button-block button-rounded button-balanced icon-left ion-chevron-right"  ng-click="goToQuiz()">
+				<span style="padding-left: 10px;font-family: GothamMedium">PLAY</span>
+			</button>
 		</div>
 	</div>
 

@@ -4,7 +4,7 @@ angular.module('colorappApp')
 
             var timeout;
             var lvl = 0;
-            var lvls = {0: 90, 2: 10, 3: 8, 4: 7, 5: 5, 7: 4, 10:3, 15: 2} //lvl : secs
+            var lvls = {0: 0.5, 2: 10, 3: 8, 4: 7, 5: 5, 7: 4, 10:3, 15: 2} //lvl : secs
 
             var button_modes = [ "full", "label" ]
             var guess_modes = [ "color", "word" ]
@@ -32,7 +32,7 @@ angular.module('colorappApp')
                 lvl++;
                 timerService.stopTimer(function (timeLeft) {
                             var points = $scope.points[quizId];
-                            $scope.points[quizId] = points + timeLeft + 1;
+                            $scope.points[quizId] = points + parseInt(timeLeft) + 1;
                         }
                 );
                 $timeout($scope.nextGuess, 500);

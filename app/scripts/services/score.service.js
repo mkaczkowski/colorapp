@@ -48,6 +48,10 @@ angular.module('colorappApp')
 
             this.isNewRecord = function(score) {
                 var user = authService.getUser();
+                console.info("user.id:"+user.id)
+                console.info("parseInt(score):"+parseInt(score))
+                console.info("parseInt(user.score):"+parseInt(user.score))
+
                 if( (!user.id || user.id == "guest") ||
                     (parseInt(score) == 0) ||
                     (user.score && parseInt(user.score) > parseInt(score))){

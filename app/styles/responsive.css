@@ -208,28 +208,6 @@
 		width: 100%;
 	}
 
-	.modal,
-	.modal-big .modal {
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		margin: 0;
-		width: 100%;
-		border: none;
-		box-shadow: none;
-		overflow: auto;
-	}
-	.modal-body {
-		margin-bottom: 116px;
-	}
-	.modal-footer {
-		position: fixed;
-		left: 0;
-		bottom: 0;
-		right: 0;
-	}
-
 	.widget-pricelist .plan {
 		width: 100%;
 		min-height: 0;

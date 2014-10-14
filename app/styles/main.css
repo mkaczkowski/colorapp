@@ -198,3 +198,35 @@ ul.ranking > li > span.title  {
 	background-color: #bb7d3f !important;
 	color: #2b2b2b !important;
 }
+
+.image-wrap.loser{
+	background-color: transparent;
+	color: rgba(174, 174, 174, 1);
+}
+
+.image-wrap.winner{
+	background-color: #6C3 !important;
+	color: #f5f5f5 !important;
+}
+
+.modal,
+.modal-big .modal {
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0;
+	width: 100%;
+	border: none;
+	box-shadow: none;
+	overflow: auto;
+}
+.modal-body {
+	margin-bottom: 116px;
+}
+.modal-footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}

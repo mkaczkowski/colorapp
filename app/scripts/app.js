@@ -41,6 +41,11 @@ angular
                         templateUrl: 'views/versus.html',
                         controller: 'QuizCtrl'
                     })
+                    .state('howTo', {
+                        url: '/howTo',
+                        templateUrl: 'views/howTo.html',
+                        controller: 'HowToCtrl'
+                    })
                     .state('ranking', {
                         url: '/ranking',
                         templateUrl: 'views/ranking.html',

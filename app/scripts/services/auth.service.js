@@ -55,7 +55,7 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
             name: '',
             full_name:'',
             picture:'images/unknown.png',
-            score:''
+            score:0
         }
 
         newUser.id = authData.uid;
@@ -92,7 +92,7 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
             name: '',
             full_name:'',
             picture:'',
-            score:''
+            score:0
         }
 
         newUser.id = authData.uid;

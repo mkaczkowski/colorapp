@@ -23,6 +23,10 @@ angular.module('colorappApp')
                 $state.go("quiz")
             };
 
+            $scope.goToHowPlay = function () {
+                $state.go("howTo")
+            };
+
             $scope.signUp = function(isValid) {
 
                 if ($scope.working) {
@@ -103,31 +107,4 @@ angular.module('colorappApp')
                 $scope.working = $scope.workingOAuth = $scope.workingGuest = false;
             }
 
-            $scope.answer1 = {};
-            $scope.answer2 = {};
-
-            $scope.okAnswer1 = function() {
-                $scope.safeApply(function () {
-                    $scope.answer1 = true;
-                });
-            };
-
-            $scope.badAnswer1 = function() {
-                $scope.safeApply(function () {
-                    $scope.answer1 = false;
-                });
-            };
-
-            $scope.okAnswer2 = function() {
-                $scope.safeApply(function () {
-                    $scope.answer2 = true;
-                });
-
-            };
-
-            $scope.badAnswer2 = function() {
-                $scope.safeApply(function () {
-                    $scope.answer2 = false;
-                });
-            };
         })

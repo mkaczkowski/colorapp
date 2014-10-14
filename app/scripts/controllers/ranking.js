@@ -30,10 +30,6 @@ angular.module('colorappApp')
                     var tmpArr = [];
                     angular.forEach(values, function (value) {
                         tmpArr.push(_.clone(value))
-                        tmpArr.push(_.clone(value))
-                        tmpArr.push(_.clone(value))
-                        tmpArr.push(_.clone(value))
-                        tmpArr.push(_.clone(value))
                     });
                     $scope.scores = tmpArr;
                 })

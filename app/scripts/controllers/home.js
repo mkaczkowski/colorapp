@@ -30,6 +30,10 @@ angular.module('colorappApp')
                 $state.go("ranking")
             };
 
+            $scope.goToHowPlay = function () {
+                $state.go("howTo")
+            };
+
             $scope.logout = function () {
                 authService.logout(function(){
                     $scope.safeApply(function(){
