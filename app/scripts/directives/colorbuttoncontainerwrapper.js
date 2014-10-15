@@ -101,18 +101,3 @@ angular.module('colorappApp')
                 }
             }
         })
-
-/*
-
-
-
- function QuizCtrl1($scope, timerService)
- {
-
-
- $scope.$on('newquiz', function (event, data) {
- console.info("newquiz1");
- var quizContainer = $compile(angular.element(document.createElement('color-button-container')))( $scope )
- angular.element(document.getElementById("quiz")).append(quizContainer);
- });
- }*/

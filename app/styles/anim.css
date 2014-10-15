@@ -2721,8 +2721,8 @@ Copyright (c) 2014 Daniel Eden
 
 	50% {
 		opacity: 0;
-		-webkit-transform: scale3d(.3, .3, .3);
-		transform: scale3d(.3, .3, .3);
+		-webkit-transform: scale3d(.5, .5, .5);
+		transform: scale3d(.5, .5, .5);
 	}
 
 	100% {
@@ -2737,8 +2737,8 @@ Copyright (c) 2014 Daniel Eden
 
 	50% {
 		opacity: 0;
-		-webkit-transform: scale3d(.3, .3, .3);
-		transform: scale3d(.3, .3, .3);
+        -webkit-transform: scale3d(.5, .5, .5);
+        transform: scale3d(.5, .5, .5);
 	}
 
 	100% {
@@ -3179,4 +3179,18 @@ Copyright (c) 2014 Daniel Eden
 .animate-show.ng-hide-remove      {
 	-webkit-animation:   flipInX 1s ease; /* Safari/Chrome */
 	animation:1s flipInX ease;
+}
+
+.animate-flip.ng-hide-add, .animate-flip.ng-hide-remove {
+    -webkit-transition:0s linear all;
+    transition:0s linear all;
+    display: block !important;
+}
+.animate-flip.ng-hide-add,          {
+    -webkit-animation:   flipOutX 1s ease; /* Safari/Chrome */
+    animation:1s flipOutX ease;
+}
+.animate-flip.ng-hide-remove      {
+    -webkit-animation:   flipInX 1s ease; /* Safari/Chrome */
+    animation:1s flipInX ease;
 }
