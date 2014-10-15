@@ -1,13 +1,8 @@
-<!--<div style="clear: both; z-index: 100">
-	<button ng-click="goBack()">&lt;-</button>
-	<button ng-click="nextGuess()">RESET</button>
-	<button ng-click="newGame()">NEW GAME</button>
-</div>-->
-
 <button class="button icon-left ion-chevron-left button-clear button-light" style="position: absolute; top: -17px; left: -3px;" ng-click="goBack()"></button>
 
 <!--BAR-->
-<div vertical-aligned style="position: absolute; top: 40px; bottom: 10em; left: 10px; right: 10px;  text-align: center">
+<div vertical-aligned class="animate-show" ng-show="guess" style="position: absolute; top: 40px; bottom: 10em; left: 10px; right: 10px;  text-align: center">
+
 	<div style="margin:0 auto;width: 100px">
 		<span class='radialtimer'  id='timer' style="float: left;" ></span>
 		<div style=" background-color: #333333; border: solid #444444 2px; color: #444444; height: 41px; width: 100px; text-align: center; padding-left: 40px; font-size: 22px; line-height: 41px; border-bottom-left-radius: 20px; border-top-left-radius: 20px; border-bottom-right-radius: 10px; border-top-right-radius: 10px">
@@ -15,7 +10,10 @@
 		</div>
 	</div>
 
-	<p class="question" ng-cloak>select <span>{{guess.guess_mode | uppercase}}</span> {{guess[guess.guess_mode]}}</p>
+	<div style="color: white">
+		<p class="question" ng-cloak>select <span>{{guess.guess_mode | uppercase}}</span> {{guess[guess.guess_mode]}}</p>
+	</div>
+
 </div>
 
 <div style="position: absolute; bottom: 0; left: 0; right: 0; text-align: center">

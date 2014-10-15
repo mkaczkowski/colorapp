@@ -41,4 +41,14 @@ angular.module('colorappApp')
                     })
                 });
             };
+
+            $scope.cos = false;
+            $scope.selectedItem = {};
+            $scope.testAnim = function (x) {
+                console.info("selectedItem:",x);
+                $('#animationSandbox').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                    $('#animationSandbox').attr("class","");
+                });
+            };
+
         })

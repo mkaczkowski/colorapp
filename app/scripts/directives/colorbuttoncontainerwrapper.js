@@ -10,7 +10,7 @@
 //<colorButtonContainerWrapper guess="{{guess}}">
 
 angular.module('colorappApp')
-        .directive('colorButtonContainerWrapper', function ($compile) {
+        .directive('colorButtonContainerWrapper', function ($compile, $timeout) {
             return {
                 template:'<div style="{{style}}">'+
                         '<div id="{{quizid}}"> </div>'+
@@ -53,6 +53,9 @@ angular.module('colorappApp')
                                 btn.children().addClass("neutral");
                             }else{
                                 btn.children().addClass("success");
+                                btn.addClass('pulse animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                                    console.info("animated")
+                                });
                             }
                         })
                         $scope.$emit('success',$scope.quizid);
@@ -66,6 +69,9 @@ angular.module('colorappApp')
                                     btn.children().addClass("neutral");
                                 }else{
                                     btn.children().addClass("failure");
+                                    btn.addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                                        console.info("animated")
+                                    });
                                 }
                             })
                         }
@@ -77,7 +83,14 @@ angular.module('colorappApp')
                         var documentElement = angular.element(document.getElementById($scope.quizid));
                         documentElement.empty();
 
-                        var quizContainer = $compile(angular.element(document.createElement('color-button-container')))( $scope )
+                        var newElement = angular.element(document.createElement('color-button-container'));
+                        var quizContainer = $compile(newElement)( $scope )
+
+                        newElement.addClass('fadeInUp animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                            console.info("animated2")
+                            newElement.removeClass('fadeInUp animated');
+                        });
+
                         documentElement.append(quizContainer);
 
                         isActive = true;
