@@ -28,7 +28,7 @@ angular.module('colorappApp')
 
                 timerService.stopTimer(function (timeLeft) {
                             var points = $scope.points[quizId];
-                            $scope.points[quizId] = points + ((mode == 1) ? (timeLeft + 1) : 1)
+                            $scope.points[quizId] = points + ((mode == 2) ? 1 : (timeLeft + 1))
                         }
                 );
 
@@ -57,10 +57,10 @@ angular.module('colorappApp')
                                 var points;
                                 if(quizId == "quiz1"){
                                     points = $scope.points['quiz2'];
-                                    $scope.points['quiz2'] = points + ((mode == 1) ? (timeLeft + 1) : 1);
+                                    $scope.points['quiz2'] = points + ((mode == 2) ? 1 : (timeLeft + 1));
                                 }else{
                                     points = $scope.points['quiz1'];
-                                    $scope.points['quiz1'] = points + ((mode == 1) ? (timeLeft + 1) : 1)
+                                    $scope.points['quiz1'] = points + ((mode == 2) ? 1 :  (timeLeft + 1));
                                 }
                                 verifyVersusScore();
                             }

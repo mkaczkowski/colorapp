@@ -54,7 +54,7 @@ angular.module('colorappApp')
 
                 if( (!user.id || user.id == "guest") ||
                     (parseInt(score) == 0) ||
-                    (user.score && parseInt(user.score) > parseInt(score))){
+                    (user.score && parseInt(user.score) >= parseInt(score))){
                         return false;
                 }
                 return true;

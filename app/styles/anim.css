@@ -3203,9 +3203,10 @@ Copyright (c) 2014 Daniel Eden
 }
 .animate-repeat.ng-hide-add,          {
 	-webkit-animation:   slideInDown .75s ease; /* Safari/Chrome */
-	animation:.75s slideInUp ease;
+	animation:1s slideInUp ease;
 }
 .animate-repeat.ng-hide-remove      {
 	-webkit-animation:   slideInDown .75s ease; /* Safari/Chrome */
-	animation:.75s slideInUp ease;
+	animation:1 slideInUp ease;
 }
+

@@ -19,8 +19,8 @@
 				<span style="padding-left: 10px;font-family: GothamMedium">VERSUS</span>
 			</button>
 
-			<div style="padding-top: 10px" ng-show="isVersus">
-				<button class="button icon-left ion-play button-clear button-royal" style="font-size: 0.9em;font-family: GothamMedium" ng-click="goToVersus(1)">200 points</button>
+			<div class="animate-flip" style="padding-top: 10px" ng-show="isVersus" ng-hide="!isVersus">
+				<button class="button icon-left ion-play button-clear button-royal" style="font-size: 0.9em;font-family: GothamMedium" ng-click="goToVersus(1)">100 points</button>
 				<button class="button icon-left ion-play button-clear button-royal" style="font-size: 0.9em;font-family: GothamMedium" ng-click="goToVersus(2)">10 wins</button>
 			</div>
 		</li>
