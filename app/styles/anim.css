@@ -3194,3 +3194,18 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation:   flipInX 1s ease; /* Safari/Chrome */
     animation:1s flipInX ease;
 }
+
+/*REPEAT*/
+.animate-repeat.ng-hide-add, .animate-repeat.ng-hide-remove {
+	-webkit-transition:0s linear all;
+	transition:0s linear all;
+	display: block !important;
+}
+.animate-repeat.ng-hide-add,          {
+	-webkit-animation:   slideInDown .75s ease; /* Safari/Chrome */
+	animation:.75s slideInUp ease;
+}
+.animate-repeat.ng-hide-remove      {
+	-webkit-animation:   slideInDown .75s ease; /* Safari/Chrome */
+	animation:.75s slideInUp ease;
+}

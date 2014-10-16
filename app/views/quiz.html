@@ -54,19 +54,19 @@
 				</div>
 			</div>
 
-			<div class="row" style="padding-top: 30px">
-				<div class="col">
-					<button class="button button-outline  button-block button-rounded button-balanced  icon-left ion-game-controller-b"
-							style="text-align: left; margin: 0 10px 0 5px" ng-click="remach()">
-						<span style="padding-left: 10px">Remach</span>
-					</button>
-				</div>
-				<div class="col">
-					<button class="button button-outline button-block  button-rounded button-light  icon-left ion-home"
-							style="text-align: left ;margin: 0" ng-click="goBack()">
-						<span style="padding-left: 10px">Home</span>
-					</button>
-				</div>
+			<div  style="padding-top: 10px; max-width: 300px; margin: 0 auto; text-align: center ">
+				<ul class="list buttonbar " style="margin: 0 auto">
+					<li class="item">
+						<button class="button button-outline button-block button-rounded button-light  icon-left ion-home" ng-click="goBack()">
+							<span style="font-family: GothamMedium">Home</span>
+						</button>
+					</li>
+					<li class="item">
+						<button class="button button-outline button-block button-rounded button-balanced  icon-left ion-game-controller-b"  ng-click="remach()">
+							<span style="font-family: GothamMedium">Remach</span>
+						</button>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</ion-modal-view>

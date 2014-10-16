@@ -15,7 +15,21 @@ angular.module('colorappApp')
             $scope.weekLabel = {};
             $scope.isCurrentWeek = true;
             $scope.user = authService.getUser();
-            $scope.scores = {};
+
+            var defaultArr  = [
+                {name:"John",score:10},
+                {name:"Marry",score:20},
+                {name:"Sam",score:40},
+                {name:"Tom",score:60},
+                {name:"Jack",score:80},
+                {name:"Meg",score:100},
+                {name:"Patrick",score:120},
+                {name:"Sue",score:150},
+                {name:"Don",score:180},
+                {name:"Paul",score:200}
+            ]
+
+            $scope.scores = {}
 
             $scope.addScore = function(score) {
                 //TEST
@@ -31,7 +45,8 @@ angular.module('colorappApp')
                     angular.forEach(values, function (value) {
                         tmpArr.push(_.clone(value))
                     });
-                    $scope.scores = tmpArr;
+
+                    $scope.scores = _.sortBy( defaultArr.concat(tmpArr), function(item) { return -item.score; }).slice(0, 10);
                 })
             };
 

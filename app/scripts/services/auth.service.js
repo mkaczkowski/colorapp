@@ -29,7 +29,6 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
     this.loginSimple = function (user, callback) {
         fbRef.authWithPassword(user, function(error, authData) {
                     if (error === null) {
-
                         fbRef.child(authData.uid).once('value', function (snap) {
                             var storedUser = snap.val();
                             if(storedUser){
@@ -65,8 +64,8 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
 
     /*FACEBOOK LOGIN*/
     this.loginFacebook = function (callback) {
-
         fbRef.authWithOAuthPopup("facebook", function(err, authData) {
+                    alert("authWithOAuthPopup:"+err.code+ " :: "+err.message);
                     if (err) {
                         if (err.code === "TRANSPORT_UNAVAILABLE") {
                             fbRef.authWithOAuthRedirect("facebook", authedUser);
@@ -83,6 +82,7 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
 
 
         function authedUser(err, authData) {
+            alert("authedUser:"+err.code+ " :: "+err.message);
             if (err === null && authData) {
                 fbRef.child(authData.uid).once('value', function (snap) {
                     var storedUser = snap.val();
@@ -97,16 +97,25 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
             }
         }
 
-        /* fbRef.authWithOAuthPopup("facebook", function(error, authData) {
-         if (error === null && authData) {
-         console.log("User ID: " + authData.uid + ", Provider: " + authData.provider);
-         } else {
-         console.log("Error authenticating user:", error);
-         callback(error)
-         }
-         },{
-         remember: "never"
-         });*/
+//        TEST IT!!
+//        var dataRef = new Firebase('https://<your-firebase>.firebaseio.com');
+//        facebookConnectPlugin.login(['public_info'], function(status) {
+//            facebookConnectPlugin.getAccessToken(function(token) {
+//                // Authenticate with Facebook using an existing OAuth 2.0 access token
+//                dataRef.authWithOAuthToken("facebook", token, function(error, authData) {
+//                    if (error) {
+//                        console.log('Firebase login failed!', error);
+//                    } else {
+//                        console.log('Authenticated successfully with payload:', authData);
+//                    }
+//                });
+//            }, function(error) {
+//                console.log('Could not get access token', error);
+//            });
+//        }, function(error) {
+//            console.log('An error occurred logging the user in', error);
+//        });
+
     };
 
     function createFBUser(authData){

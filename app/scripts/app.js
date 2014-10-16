@@ -1,15 +1,6 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name colorappApp
- * @description
- * # colorappApp
- *
- * Main module of the application.
- */
-angular
-        .module('colorappApp', [
+angular.module('colorappApp', [
             'ui.router',
             'ngAnimate',
             'ngTouch',
@@ -37,7 +28,7 @@ angular
                         controller: 'QuizCtrl'
                     })
                     .state('versus', {
-                        url: '/versus',
+                        url: '/versus?mode',
                         templateUrl: 'views/versus.html',
                         controller: 'QuizCtrl'
                     })
@@ -95,24 +86,16 @@ angular
                 } else {
                     timerService.stopTimer();
                     modalService.hideAll();
-                    $rootScope.addGlass();
+                    //$rootScope.addGlass();
                     $state.go("home");
                 }
             }
 
-            $rootScope.addGlass = function(){
-                angular.element(document.getElementById("navView")).addClass("my-panel-pad")
-            }
-
-            $rootScope.removeGlass = function(){
-                angular.element(document.getElementById("navView")).removeClass("my-panel-pad")
-            }
 
             $ionicPlatform.registerBackButtonAction(function () {
                 console.info("registerBackButtonAction");
                 $rootScope.goBack();
             }, 100);
 
-//            document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
         })
 

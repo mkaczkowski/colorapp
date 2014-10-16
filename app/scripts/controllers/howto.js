@@ -39,7 +39,7 @@ angular.module('colorappApp')
             };
 
             $scope.goToQuiz = function () {
-                $scope.removeGlass();
+//                $scope.removeGlass();
                 $state.go("quiz")
             };
 

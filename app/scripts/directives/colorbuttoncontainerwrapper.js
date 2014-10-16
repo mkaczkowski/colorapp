@@ -69,9 +69,7 @@ angular.module('colorappApp')
                                     btn.children().addClass("neutral");
                                 }else{
                                     btn.children().addClass("failure");
-                                    btn.addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                                        console.info("animated")
-                                    });
+                                    btn.addClass('shake animated');
                                 }
                             })
                         }
@@ -81,23 +79,28 @@ angular.module('colorappApp')
                     $scope.$on('newquiz',function () {
                         console.info("newquiz:"+$scope.quizid)
                         var documentElement = angular.element(document.getElementById($scope.quizid));
-                        documentElement.empty();
 
                         var newElement = angular.element(document.createElement('color-button-container'));
                         var quizContainer = $compile(newElement)( $scope )
 
                         newElement.addClass('fadeInUp animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                            console.info("animated2")
                             newElement.removeClass('fadeInUp animated');
                         });
 
-                        documentElement.append(quizContainer);
+                        console.info(" documentElement.children():", documentElement.children().length);
+                        if(documentElement.children().length > 0){
+                            documentElement.children().first().addClass('zoomOut animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                                $timeout(function(){
+                                    documentElement.empty();
+                                    documentElement.append(quizContainer);
+                                },200);
+                            });
+                        }else{
+                            documentElement.append(quizContainer);
+                        }
 
                         isActive = true;
                     })
-                },
-                link: function compile(scope, element) {
-
                 }
             }
         })

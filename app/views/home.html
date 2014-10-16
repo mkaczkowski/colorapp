@@ -2,149 +2,38 @@
 	<h1 style="font-family: GothamBold; width:100%; text-align: center; color: #f5f5f5">ColorQuiz</h1>
 </div>
 <div  vertical-aligned style="position:absolute; width: 100%; top: 40px; bottom: 0px; margin: 0 auto; ">
-	<ul class="list buttonbar " style="max-width: 300px; margin: 0 auto">
-		<li class="item" ng-show="user.id" style="padding-bottom:1em">
+	<ul class="list buttonbar " style="margin: 0 auto; max-width: 650px;">
+		<li class="item" ng-show="user.id" style="padding-bottom:1em;">
 			<div class="logo box cutout" style="margin: 0px auto; width: 6em; height: 6em;" >
 				<span class="image-wrap" style="width:100%; height:100%;  display:inline-block; background: url('{{user.picture}}') no-repeat scroll center center / 100% 100% white;"> </span>
 			</div>
 			<p style="font-size: 1.3em; padding-top: 0.2em; margin-bottom: 0.3em; color:#cbcbcb;font-family: GothamMedium">{{user.name}}<button class="button-icon icon ion-power" ng-click="logout()" style="color: #8d8d8d; border: none"></button></p>
 		</li>
-		<li class="item">
-			<button class="button button-outline button-block button-rounded button-balanced  icon-left ion-game-controller-b"
-					style="text-align: left; " ng-click="play()">
+		<li class="item home-button" >
+			<button class="button button-outline button-block button-rounded button-balanced  icon-left ion-game-controller-b" style="text-align: left;min-width: 200px;" ng-click="play()">
 				<span style="padding-left: 10px;font-family: GothamMedium">PLAY</span>
 			</button>
 		</li>
-		<li class="item">
-			<button class="button button-outline button-block button-rounded button-royal  icon-left ion-person-stalker" style="text-align: left" ng-click="goToVersus()">
+		<li class="item home-button">
+			<button class="button button-outline button-block button-rounded button-royal  icon-left ion-person-stalker" style="text-align: left;min-width: 200px" ng-click="isVersus = !isVersus">
 				<span style="padding-left: 10px;font-family: GothamMedium">VERSUS</span>
 			</button>
+
+			<div style="padding-top: 10px" ng-show="isVersus">
+				<button class="button icon-left ion-play button-clear button-royal" style="font-size: 0.9em;font-family: GothamMedium" ng-click="goToVersus(1)">200 points</button>
+				<button class="button icon-left ion-play button-clear button-royal" style="font-size: 0.9em;font-family: GothamMedium" ng-click="goToVersus(2)">10 wins</button>
+			</div>
 		</li>
-		<li class="item">
-			<button class="button button-outline button-block button-rounded button-positive  icon-left ion-help-circled" style="text-align: left" ng-click="goToHowPlay()">
+		<li class="item home-button" >
+			<button class="button button-outline button-block button-rounded button-positive  icon-left ion-help-circled" style="text-align: left;min-width: 200px" ng-click="goToHowPlay()">
 				<span style="padding-left: 10px;font-family: GothamMedium">HOW TO PLAY</span>
 			</button>
 		</li>
-		<li class="item">
-			<button class="button button-outline button-block button-rounded button-energized  icon-left ion-trophy" style="text-align: left" ng-click="goToRanking()">
+		<li class="item home-button" >
+			<button class="button button-outline button-block button-rounded button-energized  icon-left ion-trophy" style="text-align: left;min-width: 200px" ng-click="goToRanking()">
 				<span style="padding-left: 10px;font-family: GothamMedium">TOP 10</span>
 			</button>
 		</li>
-	<!--	<li class="item">
-			<div style="color: white">
-				<h1>Attention seekers</h1>
-				<div ng-show="cos" class="animate-show" style="background-color: rgba(255, 202, 202, 0.61)">flash</div>
-				<div ng-if="cos" class="flash" style="background-color: rgba(255, 202, 202, 0.61)">flash</div>
-				<span id="animationSandbox" style="display: block;"><h1 class="site__title mega">Animate.css</h1></span>
-			</div>
-			<p>
-				<button ng-click="cos=!cos">Toggle</button>
-
-				<select class="input input--dropdown js--animations" ng-model="selectedItem" ng-change="testAnim(selectedItem)">
-					<optgroup label="Attention Seekers">
-						<option value="bounce">bounce</option>
-						<option value="flash">flash</option>
-						<option value="pulse">pulse</option>
-						<option value="rubberBand">rubberBand</option>
-						<option value="shake">shake</option>
-						<option value="swing">swing</option>
-						<option value="tada">tada</option>
-						<option value="wobble">wobble</option>
-					</optgroup>
-
-					<optgroup label="Bouncing Entrances">
-						<option value="bounceIn">bounceIn</option>
-						<option value="bounceInDown">bounceInDown</option>
-						<option value="bounceInLeft">bounceInLeft</option>
-						<option value="bounceInRight">bounceInRight</option>
-						<option value="bounceInUp">bounceInUp</option>
-					</optgroup>
-
-					<optgroup label="Bouncing Exits">
-						<option value="bounceOut">bounceOut</option>
-						<option value="bounceOutDown">bounceOutDown</option>
-						<option value="bounceOutLeft">bounceOutLeft</option>
-						<option value="bounceOutRight">bounceOutRight</option>
-						<option value="bounceOutUp">bounceOutUp</option>
-					</optgroup>
-
-					<optgroup label="Fading Entrances">
-						<option value="fadeIn">fadeIn</option>
-						<option value="fadeInDown">fadeInDown</option>
-						<option value="fadeInDownBig">fadeInDownBig</option>
-						<option value="fadeInLeft">fadeInLeft</option>
-						<option value="fadeInLeftBig">fadeInLeftBig</option>
-						<option value="fadeInRight">fadeInRight</option>
-						<option value="fadeInRightBig">fadeInRightBig</option>
-						<option value="fadeInUp">fadeInUp</option>
-						<option value="fadeInUpBig">fadeInUpBig</option>
-					</optgroup>
-
-					<optgroup label="Fading Exits">
-						<option value="fadeOut">fadeOut</option>
-						<option value="fadeOutDown">fadeOutDown</option>
-						<option value="fadeOutDownBig">fadeOutDownBig</option>
-						<option value="fadeOutLeft">fadeOutLeft</option>
-						<option value="fadeOutLeftBig">fadeOutLeftBig</option>
-						<option value="fadeOutRight">fadeOutRight</option>
-						<option value="fadeOutRightBig">fadeOutRightBig</option>
-						<option value="fadeOutUp">fadeOutUp</option>
-						<option value="fadeOutUpBig">fadeOutUpBig</option>
-					</optgroup>
-
-					<optgroup label="Flippers">
-						<option value="flip">flip</option>
-						<option value="flipInX">flipInX</option>
-						<option value="flipInY">flipInY</option>
-						<option value="flipOutX">flipOutX</option>
-						<option value="flipOutY">flipOutY</option>
-					</optgroup>
-
-					<optgroup label="Lightspeed">
-						<option value="lightSpeedIn">lightSpeedIn</option>
-						<option value="lightSpeedOut">lightSpeedOut</option>
-					</optgroup>
-
-					<optgroup label="Rotating Entrances">
-						<option value="rotateIn">rotateIn</option>
-						<option value="rotateInDownLeft">rotateInDownLeft</option>
-						<option value="rotateInDownRight">rotateInDownRight</option>
-						<option value="rotateInUpLeft">rotateInUpLeft</option>
-						<option value="rotateInUpRight">rotateInUpRight</option>
-					</optgroup>
-
-					<optgroup label="Rotating Exits">
-						<option value="rotateOut">rotateOut</option>
-						<option value="rotateOutDownLeft">rotateOutDownLeft</option>
-						<option value="rotateOutDownRight">rotateOutDownRight</option>
-						<option value="rotateOutUpLeft">rotateOutUpLeft</option>
-						<option value="rotateOutUpRight">rotateOutUpRight</option>
-					</optgroup>
-
-					<optgroup label="Specials">
-						<option value="hinge">hinge</option>
-						<option value="rollIn">rollIn</option>
-						<option value="rollOut">rollOut</option>
-					</optgroup>
-
-					<optgroup label="Zoom Entrances">
-						<option value="zoomIn">zoomIn</option>
-						<option value="zoomInDown">zoomInDown</option>
-						<option value="zoomInLeft">zoomInLeft</option>
-						<option value="zoomInRight">zoomInRight</option>
-						<option value="zoomInUp">zoomInUp</option>
-					</optgroup>
-
-					<optgroup label="Zoom Exits">
-						<option value="zoomOut">zoomOut</option>
-						<option value="zoomOutDown">zoomOutDown</option>
-						<option value="zoomOutLeft">zoomOutLeft</option>
-						<option value="zoomOutRight">zoomOutRight</option>
-						<option value="zoomOutUp">zoomOutUp</option>
-					</optgroup>
-				</select>
-			</p>
-		</li>-->
 	</ul>
 </div>
 

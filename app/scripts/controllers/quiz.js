@@ -1,10 +1,10 @@
 'use strict';
 angular.module('colorappApp')
-        .controller('QuizCtrl', function ($scope, $compile, $timeout, timerService, modalService, $state, scoreService) {
+        .controller('QuizCtrl', function ($scope, $compile, $timeout, $stateParams, timerService, modalService, $state, scoreService) {
 
             var timeout;
             var lvl = 0;
-            var lvls = {0: 915, 2: 10, 3: 8, 4: 7, 5: 5, 7: 4, 10:3, 15: 2} //lvl : secs
+            var lvls = {0: 15, 2: 10, 3: 8, 4: 7, 5: 5, 7: 4, 10:3, 15: 2} //lvl : secs
 
             var button_modes = [ "full", "label" ]
             var guess_modes = [ "color", "word" ]
@@ -13,34 +13,43 @@ angular.module('colorappApp')
             var isFailed = false;
 
             var players = $state.current.name == "versus" ? ["quiz1","quiz2"] : ["quiz1"]
+            var mode = parseInt($stateParams.mode);
 
-            $scope.guess = {};
+            $scope.guess = undefined;
             $scope.modalTitle = ""
             $scope.scorePublished = false;
             $scope.points = {};
-
-            $scope.guess = {
-                color: {},
-                word:{},
-                guess_mode:{},
-                button_mode:{}
-            }
 
             $scope.$on('success',function (event, quizId) {
                 console.info("success:"+quizId)
                 if(!isActive) return;
                 isActive = false;
                 lvl++;
+
                 timerService.stopTimer(function (timeLeft) {
                             var points = $scope.points[quizId];
-                            $scope.points[quizId] = points + parseInt(timeLeft) + 1;
+                            $scope.points[quizId] = points + ((mode == 1) ? (timeLeft + 1) : 1)
                         }
                 );
-                $timeout($scope.nextGuess, 1100);
+
+                if(players.length > 1){
+                    verifyVersusScore();
+                }else{
+                    $timeout($scope.nextGuess, 500);
+                }
             })
 
+            function verifyVersusScore() {
+                if (((mode == 1) && $scope.points['quiz2'] < 100 && $scope.points['quiz1'] < 100) || ((mode == 2) && $scope.points['quiz2'] < 10 && $scope.points['quiz1'] < 10)) {
+                    $timeout($scope.nextGuess, 600);
+                } else {
+                    $scope.modalTitle = "Game Over!"
+                    $scope.showFailure()
+                }
+            }
+
             $scope.$on('failure',function (event, quizId) {
-                console.info("failuree:",quizId)
+                console.info("failuree:",mode)
                 if(!isActive) return;
                 isActive = false;
                 if(players.length > 1){
@@ -48,12 +57,12 @@ angular.module('colorappApp')
                                 var points;
                                 if(quizId == "quiz1"){
                                     points = $scope.points['quiz2'];
-                                    $scope.points['quiz2'] = points + timeLeft + 1;
+                                    $scope.points['quiz2'] = points + ((mode == 1) ? (timeLeft + 1) : 1);
                                 }else{
                                     points = $scope.points['quiz1'];
-                                    $scope.points['quiz1'] = points + timeLeft + 1;
+                                    $scope.points['quiz1'] = points + ((mode == 1) ? (timeLeft + 1) : 1)
                                 }
-                                $timeout($scope.nextGuess, 500);
+                                verifyVersusScore();
                             }
                     );
                 }else{
@@ -66,25 +75,23 @@ angular.module('colorappApp')
             })
 
             $scope.timeIsOut = function(){
+                console.info("timeout players.length:"+players.length);
                 if(!isActive){return;}
+                isActive = false;
 
-                $scope.modalTitle = "Time Out!"
-                $scope.showFailure()
+                if(players.length > 1){
+                    $scope.nextGuess();
+                }else{
+                    $scope.modalTitle = "Time Out!"
+                    $scope.showFailure()
+                }
+
             }
 
             $scope.nextGuess = function(_guess_mode, _button_mode){
-                clearPanels();
-                $timeout(function(){
-                    makeElements(_guess_mode, _button_mode);
-                },500);
-            }
-
-            function clearPanels() {
+                $scope.guess = undefined;
                 $scope.buttons = [];
-                $("#quiz1, #quiz2").addClass('zoomOut animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                    console.info("animated")
-                    $("#quiz1, #quiz2").removeClass('zoomOut animated').empty();
-                });
+                makeElements(_guess_mode, _button_mode);
             }
 
             function makeElements(_guess_mode, _button_mode){
@@ -120,7 +127,6 @@ angular.module('colorappApp')
 
             $scope.newGame = function () {
                 lvl = 0;
-                $scope.safeApply(function () { $scope.guess = undefined });
                 var tmpPoints = {};
                 angular.forEach(players,function(index){
                     tmpPoints[index] = 0;
@@ -131,7 +137,8 @@ angular.module('colorappApp')
 
             $scope.remach = function () {
                 $scope.hideFailure();
-                $scope.newGame();
+                $scope.guess = undefined;
+                $timeout($scope.newGame, 500);
             };
 
             $scope.showFailure = function() {
@@ -175,5 +182,5 @@ angular.module('colorappApp')
                 });
             };
 
-            $timeout($scope.newGame, 100);
+            $timeout($scope.newGame, 500);
         })

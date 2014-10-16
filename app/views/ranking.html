@@ -23,15 +23,15 @@
 
 	<div style="position: absolute; left: 0px; right: 0px; bottom: 0px; top: 11em">
 
-		<div style="text-align: center;">
-			<button class="button icon-left ion-skip-backward button-clear button-light" style="font-size: 0.9em;" ng-click="prevWeek()"></button>
-			<button class="button button-clear button-light" style="font-size: 1em; " ng-click="thisWeek()">{{weekLabel}}</button>
-			<button class="button icon-right ion-skip-forward button-clear button-light" style="font-size: 0.9em;"  ng-show="!isCurrentWeek" ng-click="nextWeek()"></button>
+		<div style="margin: 0 auto; display: table">
+			<button class="button icon-left ion-skip-backward button-clear button-light" style="font-size: 0.9em; float: left" ng-click="prevWeek()"></button>
+			<button class="button button-clear button-light" style="font-size: 1em;; float: left" ng-click="thisWeek()">{{weekLabel}}</button>
+			<button class="button icon-right ion-skip-forward button-clear button-light" style="font-size: 0.9em; float: left"  ng-show="!isCurrentWeek" ng-click="nextWeek()"></button>
 		</div>
 
 		<ion-scroll zooming="false" direction="y" style="position: absolute;  bottom: 0; top: 3.5em; right: 0; left: 0">
-			<ul class="ranking" style="border-radius: 10px; color: #f5f5f5;width: 100%; padding: 0 10px">
-				<li class="animate-repeat" ng-repeat="item in scores | orderBy:'score':true" style="height: 3em; line-height: 3em; margin-bottom: 0.6em">
+			<ul class="ranking animate-repeat" style="border-radius: 10px; color: #f5f5f5;width: 100%; padding: 0 10px" ng-show="scores.length > 0">
+				<li  ng-repeat="item in scores | orderBy:'score':true" style="height: 3em; line-height: 3em; margin-bottom: 0.6em">
 					<span class="counter">{{$index + 1}}</span>
 					<span class="title">{{item.name}}</span>
 				<span class="logo box cutout" style=" width: 3em; height: 3em; float: right" >
@@ -41,6 +41,11 @@
 			</span>
 				</li>
 			</ul>
+
+			<div ng-show="!scores.length" style="text-align: center;color: white">
+				<span class="icon ion-loading-c"></span>
+			</div>
+
 		</ion-scroll>
 	</div>
 

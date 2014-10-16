@@ -3,6 +3,7 @@ angular.module('colorappApp')
         .controller('HomeCtrl', function ($scope, modalService, authService, $state) {
 
             $scope.user = authService.getUser();
+            $scope.isVersus = false;
 
             $scope.play = function () {
                 if(authService.getUser().id){
@@ -17,13 +18,13 @@ angular.module('colorappApp')
             };
 
             $scope.goToQuiz = function () {
-                $scope.removeGlass();
+//                $scope.removeGlass();
                 $state.go("quiz")
             };
 
-            $scope.goToVersus = function () {
-                $scope.removeGlass();
-                $state.go("versus")
+            $scope.goToVersus = function (mode) {
+//                $scope.removeGlass();
+                $state.go("versus",{mode:mode})
             };
 
             $scope.goToRanking = function () {

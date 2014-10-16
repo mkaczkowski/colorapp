@@ -85,54 +85,54 @@ body {
 	border-radius: 5px;
 }
 
-	/*
-	.my-panel {
-		margin:0px;
-		padding:20px 10px 10px 10px;
-		border:1px solid rgba(0,0,0,0.5);
-		border-radius:12px 12px 10px 10px;
-		-webkit-box-shadow:
-		0 2px 6px rgba(0,0,0,0.5),
-		inset 0 1px rgba(255,255,255,0.3),
-		inset 0 8px rgba(255,255,255,0.2),
-		inset 0 8px 20px rgba(255,255,255,0.25),
-		inset 0 -15px 30px rgba(0,0,0,0.3);
-		box-shadow:
-		0 2px 6px rgba(0,0,0,0.5),
-		inset 0 1px rgba(255,255,255,0.3),
-		inset 0 8px rgba(255,255,255,0.2),
-		inset 0 8px 20px rgba(255,255,255,0.25),
-		inset 0 -15px 30px rgba(0,0,0,0.3);
-		background:rgba(0,0,0,0.92);
-	}
 
-	.my-panel-pad{
-		margin:0px;
-		padding:20px 10px 10px 10px;
-		border:1px solid rgba(0,0,0,0.5);
-		border-radius:12px 12px 10px 10px;
-		-webkit-box-shadow:
-		0 2px 6px rgba(0,0,0,0.5),
-		inset 0 1px rgba(255,255,255,0.3),
-		inset 0 8px rgba(255,255,255,0.2),
-		inset 0 8px 20px rgba(255,255,255,0.25),
-		inset 0 -15px 30px rgba(0,0,0,0.3);
-		box-shadow:
-		0 2px 6px rgba(0,0,0,0.5),
-		inset 0 1px rgba(255,255,255,0.3),
-		inset 0 8px rgba(255,255,255,0.2),
-		inset 0 8px 20px rgba(255,255,255,0.25),
-		inset 0 -15px 30px rgba(0,0,0,0.3);
-		background:rgba(0,0,0,0.25);
-		position:absolute;
-		left:6px;
-		right:6px;
-		top:6px;
-		bottom:6px;
-		width:auto;
-		height: auto;
-	}
-	*/
+.my-panel {
+	margin:0px;
+	padding:20px 10px 10px 10px;
+	border:1px solid rgba(0,0,0,0.5);
+	border-radius:12px 12px 10px 10px;
+	-webkit-box-shadow:
+	0 2px 6px rgba(0,0,0,0.5),
+	inset 0 1px rgba(255,255,255,0.3),
+	inset 0 8px rgba(255,255,255,0.2),
+	inset 0 8px 20px rgba(255,255,255,0.25),
+	inset 0 -15px 30px rgba(0,0,0,0.3);
+	box-shadow:
+	0 2px 6px rgba(0,0,0,0.5),
+	inset 0 1px rgba(255,255,255,0.3),
+	inset 0 8px rgba(255,255,255,0.2),
+	inset 0 8px 20px rgba(255,255,255,0.25),
+	inset 0 -15px 30px rgba(0,0,0,0.3);
+	background:rgba(0,0,0,0.92);
+}
+/*
+.my-panel-pad{
+	margin:0px;
+	padding:20px 10px 10px 10px;
+	border:1px solid rgba(0,0,0,0.5);
+	border-radius:12px 12px 10px 10px;
+	-webkit-box-shadow:
+	0 2px 6px rgba(0,0,0,0.5),
+	inset 0 1px rgba(255,255,255,0.3),
+	inset 0 8px rgba(255,255,255,0.2),
+	inset 0 8px 20px rgba(255,255,255,0.25),
+	inset 0 -15px 30px rgba(0,0,0,0.3);
+	box-shadow:
+	0 2px 6px rgba(0,0,0,0.5),
+	inset 0 1px rgba(255,255,255,0.3),
+	inset 0 8px rgba(255,255,255,0.2),
+	inset 0 8px 20px rgba(255,255,255,0.25),
+	inset 0 -15px 30px rgba(0,0,0,0.3);
+	background:rgba(0,0,0,0.25);
+	position:absolute;
+	left:6px;
+	right:6px;
+	top:6px;
+	bottom:6px;
+	width:auto;
+	height: auto;
+}
+*/
 
 /*RANKING*/
 ul.ranking  {
@@ -222,4 +222,92 @@ ul.ranking > li > span.title  {
 	left: 0;
 	bottom: 0;
 	right: 0;
+}
+
+.home-button{
+	display: block;
+	width:100%;
+	max-width: 270px;
+	margin: 0 auto;
+}
+
+.questionsBar{
+	position: absolute;
+	width: 100%;
+}
+
+#question1{
+	transform: rotate(180deg);
+	-webkit-transform:rotate(180deg);
+	position: relative;
+	top: -100px
+}
+
+#question2{
+	position: relative;
+	top: -50px;
+}
+
+.radialtimer2{
+	-webkit-transform:rotate(270deg);
+	transform: rotate(270deg);
+	position: absolute !important;
+}
+
+@media screen  and (max-device-height: 460px) and (min-device-width: 533px) and (orientation: landscape){
+
+	.scoreboardwrapper{
+		top: 8em !important;
+		bottom: 8em !important;
+	}
+
+	#question1{
+		top: -40px !important;
+		left: 160px;
+		font-size: 1.2em !important;
+	}
+
+	#question2{
+		top: -100px !important;
+		left: -160px;
+		font-size: 1.2em !important;
+	}
+}
+
+@media screen  and (max-device-height: 375px) and (min-device-width: 533px) {
+	.buttoner {
+		font-size: 1.1em !important;
+		padding: .50em 1.1em 0.65em;
+	}
+}
+
+@media screen  and (max-device-height: 460px) and (min-device-width: 620px){
+	.buttoner {
+		font-size: 1.1em !important;
+	}
+}
+
+@media screen  and (min-device-width: 700px) and (min-device-height: 700px){
+	.buttoner {
+		font-size: 1.8em !important;
+	}
+
+	.question{
+		font-size: 2.5em !important;
+	}
+
+	#question1{
+		top: -120px
+	}
+
+	#question2{
+		top: -50px;
+	}
+}
+
+@media screen  and (max-device-height: 400px) and (min-device-width: 530px){
+	.home-button{
+		display: inline-block !important;
+		max-width: 220px  !important;
+	}
 }
