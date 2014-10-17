@@ -28,15 +28,16 @@ position: absolute; top: 0; left: 0; right: 0; bottom: 0">-->
 
 <div  style="position:absolute; top: 7px; bottom: 7px; left: 6px; right: 6px;">
 	<div id="navView" class="my-panel-pad" style="position:absolute;top: 0px; bottom: 0px; left: 0px; right: 0px; ">
-		<div class="slide-left-right"  style="position:absolute; top: 20px; bottom: 10px; left: 10px; right: 10px;" ui-view>
+		<div id="viewWrapper" class="slide-left-right"  style="position:absolute; top: 20px; bottom: 10px; left: 10px; right: 10px;" ui-view>
 
 		</div>
 	</div>
 </div>
 
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
 <!-- build:js(./) scripts/vendor.js -->
 <!-- bower:js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/jQuery/dist/jquery.js"></script>
 <script src="bower_components/es5-shim/es5-shim.js"></script>
 <script src="bower_components/angular/angular.js"></script>
@@ -52,8 +53,6 @@ position: absolute; top: 0; left: 0; right: 0; bottom: 0">-->
 <script src="bower_components/underscore/underscore.js"></script>
 <script src="bower_components/moment/moment.js"></script>
 <script src="bower_components/firebase/firebase.js"></script>
-<script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
-<script src="bower_components/mockfirebase/dist/mockfirebase.js"></script>
 <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
 <script src="bower_components/restive/restive.js"></script>
 <!-- endbower -->

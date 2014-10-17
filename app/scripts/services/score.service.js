@@ -20,14 +20,12 @@ angular.module('colorappApp')
             this.addScore = function(data, callback) {
                 console.info("addScore:",data)
 
+                var user = authService.getUser();
+
                 if(!_self.isNewRecord(data.score)){
                     callback(null)
                     return;
                 }
-
-                var user = authService.getUser();
-                user.score = data.score;
-                authService.updateUser(user, data)
 
                 data = _.extend({
                     userId: user.id,
@@ -35,6 +33,8 @@ angular.module('colorappApp')
                     date:moment(new Date()).format('MM/DD/YYYY')
                 }, data);
 
+
+                //ADD SCORE TO TOP
                 fbRef.child(CURRENT_WEEK_NO).child(user.id).setWithPriority(data, -data.score, function (err) {
                     if (err) {
                         console.error(err);
@@ -42,21 +42,53 @@ angular.module('colorappApp')
                         console.info("score added");
                     }
                     if(callback){ callback(err) }
-
                 });
+
+                //UPDATE USER
+                user.scores[CURRENT_WEEK_NO] = user.weekScore = data.score;
+
+                if(!_self.isNewOverallRecord(data.score)){
+                    delete data.score
+                }
+
+                data = _.extend({ scores: user.scores }, data);
+                authService.updateUser(user, data)
+            }
+
+            this.isNewOverallRecord = function(score) {
+                var user = authService.getUser();
+                var overallScore = parseInt(user.score);
+
+                if( (!user.id || user.id == "guest") ||
+                        (parseInt(score) == 0) ||
+                        (overallScore && parseInt(overallScore) >= parseInt(score))){
+                    return false;
+                }
+                return true;
             }
 
             this.isNewRecord = function(score) {
                 var user = authService.getUser();
-                console.info("user.id:"+user.id)
-                console.info("parseInt(score):"+parseInt(score))
-                console.info("parseInt(user.score):"+parseInt(user.score))
 
-                if( (!user.id || user.id == "guest") ||
-                    (parseInt(score) == 0) ||
-                    (user.score && parseInt(user.score) >= parseInt(score))){
-                        return false;
+                if(!user.scores){ user.scores = {}; }
+                var weekScore = user.scores[CURRENT_WEEK_NO];
+
+                if(!user.id || user.id == "guest"){
+                    return false;
                 }
+
+                if(parseInt(score) == 0){
+                    return false;
+                }
+
+                if (!weekScore) {
+                    return true;
+                }
+
+                if( parseInt(weekScore) >= parseInt(score)) {
+                    return false;
+                }
+
                 return true;
             }
         });

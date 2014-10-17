@@ -1,6 +1,6 @@
 <button class="button icon-left ion-chevron-left button-clear button-light" style="position: absolute; top: -17px; left: -3px;z-index: 100" ng-click="goBack()"></button>
 
-<div vertical-aligned style="width: 100%; height: 100%; margin: 0 auto; padding-top: 40px;  max-width: 400px; "
+<div id="authWrapper" vertical-aligned style="width: 100%; height: 100%; margin: 0 auto; padding-top: 40px;  max-width: 400px; "
      ng-show="!user.id" class="animate-flip">
 	<ul class="list buttonbar" style="max-width: 400px; width: 100%">
 		<li class="item" style="padding-bottom: 0px">
@@ -103,6 +103,7 @@
 		</div>
 		<div style="font-size: 1.1em;padding-top: 0.5em" ng-show="user.id != 'guest'">
 			<p>Best score: <b style="font-size: 1.1em">{{user.score}}</b></p>
+			<p>This week score: <b style="font-size: 1.1em">{{user.weekScore}}</b></p>
 		</div>
 
 		<div style="padding-top: 0.5em" ng-show="user.id == 'guest'">

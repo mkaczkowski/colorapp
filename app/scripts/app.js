@@ -91,11 +91,30 @@ angular.module('colorappApp', [
                 }
             }
 
-
             $ionicPlatform.registerBackButtonAction(function () {
                 console.info("registerBackButtonAction");
                 $rootScope.goBack();
             }, 100);
 
+            $('body').restive({
+                onReady: function(){console.info("I'M READY WHEN YOU ARE!");},
+                onResize: function(){console.info("I JUST GOT RESIZED!");},
+                onRotate: function(){console.info("I JUST GOT ROTATED!");},
+                onRotateToP: function(){console.info("I JUST GOT ROTATED TO PORTRAIT!");},
+                onRotateToL: function(){console.info("I JUST GOT ROTATED TO LANDSCAPE!");},
+                onRetina: function(){console.info("I CANNOT BE MORE CLEAR-EYED!");},
+                onPortrait: function(){console.info("I AM TALLER THAN I AM WIDE!");},
+                onLandscape: function(){console.info("I AM WIDER THAN I AM TALL!");},
+                onPhone: function(){console.info("I AM A PHONE!");},
+                onTablet: function(){console.info("I AM A TABLET!");},
+                onTV: function(){console.info("I AM A TELEVISION!");},
+                onPC: function(){console.info("I AM NOT A PHONE, TABLET, OR TV!");},
+                onMobile: function(){console.info("I AM MOBILE!");},
+                onNonMobile: function(){console.info("I AM NOT MOBILE!");},
+                breakpoints: ['240', '320','360', '1000-l', '10000'],
+                classes: ['css-240', 'css-320','css-360','css-1000-l','css-10000'],
+                turbo_classes: 'is_mobile=mobi,is_phone=phone,is_tablet=tablet,is_landscape=landscape,is_pc=pc',
+                force_dip: true
+            });
         })
 

@@ -12,14 +12,12 @@ angular.module('colorappApp')
             $scope.workingGuest = false;
             $scope.isSigning = false;
 
+            $scope.user = { email: "", password: "" };
+
             //TEST
-            $scope.user = {
-                email: "orekk@wp.pl",
-                password: "1234"
-            };
+            //$scope.user = { email: "ore@wp.pl", password: "1234" };
 
             $scope.goToQuiz = function () {
-//                $scope.removeGlass();
                 $state.go("quiz")
             };
 
@@ -106,5 +104,4 @@ angular.module('colorappApp')
             function stopWorking(){
                 $scope.working = $scope.workingOAuth = $scope.workingGuest = false;
             }
-
         })

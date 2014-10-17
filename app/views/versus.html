@@ -1,42 +1,45 @@
 <!--PLAYER1-->
-<color-button-container-wrapper quizid="quiz1" guess="guess" words="words" colors="colors"
-								style="transform: rotate(180deg);-webkit-transform:rotate(180deg);position: absolute; top: 0px; left: 0px; right: 0px">
-</color-button-container-wrapper>
+<div id="versus" style="position: absolute; top: 0px; left: 0px; right: 0px;">
+	<div style="transform: rotate(180deg);-webkit-transform:rotate(180deg);position: absolute; top: 0px; left: 0px; right: 0px; text-align: center">
+		<color-button-container-wrapper quizid="quiz1" guess="guess" words="words" colors="colors" style="max-width: 700px;margin: 0 auto"></color-button-container-wrapper>
+	</div>
 
-<!--BAR-->
-<div vertical-aligned class="scoreboardwrapper animate-show" ng-show="guess" style="position: absolute; top: 10em; bottom: 10em; left: 10px; right: 10px;  text-align: center">
+	<!--BAR-->
+	<div vertical-aligned class="scoreboardwrapper animate-show" ng-show="guess" style="position: absolute; top: 10em; bottom: 10em; left: 10px; right: 10px;  text-align: center">
 
-	<!--TIMER-->
-	<div  class="scoreboard" style="margin:0 auto; display: table;padding: 0 30px">
+		<!--TIMER-->
+		<div  class="scoreboard" style="margin:0 auto; display: table;padding: 0 30px">
 		<span>
 			<div class='radialtimer2'  id='timer' ></div>
 		</span>
-		<div style=" background-color: #333333; border: solid #444444 2px; color: #444444; height: 61px; width: 120px; text-align: center; padding-left: 60px; font-size: 22px; line-height: 61px; border-bottom-left-radius: 30px; border-top-left-radius: 30px; border-bottom-right-radius: 10px; border-top-right-radius: 10px">
-			<div style="transform: rotate(180deg);-webkit-transform:rotate(180deg); height: 30px;line-height: 27px">
-				<span style="color: #FF962F;">{{points['quiz1']}}</span>
-			</div>
-			<div style="height: 2px; position: relative; left: 0px; right: -2px; background-color: #444444"></div>
-			<div style=" height: 30px; line-height: 28px">
-				<span style="color: greenyellow;">{{points['quiz2']}}</span>
+			<div style=" background-color: #333333; border: solid #444444 2px; color: #444444; height: 61px; width: 120px; text-align: center; padding-left: 60px; font-size: 22px; line-height: 61px; border-bottom-left-radius: 30px; border-top-left-radius: 30px; border-bottom-right-radius: 10px; border-top-right-radius: 10px">
+				<div style="transform: rotate(180deg);-webkit-transform:rotate(180deg); height: 30px;line-height: 27px">
+					<span style="color: #FF962F;">{{points['quiz1']}}</span>
+				</div>
+				<div style="height: 2px; position: relative; left: 0px; right: -2px; background-color: #444444"></div>
+				<div style=" height: 30px; line-height: 28px">
+					<span style="color: greenyellow;">{{points['quiz2']}}</span>
+				</div>
 			</div>
 		</div>
+
+		<!--QUESTIONS-->
+		<div class="questionsBar">
+			<p id="question1" style="" class="question"  ng-cloak>select <span>{{guess.guess_mode | uppercase}}</span> {{guess[guess.guess_mode]}}</p>
+			<p id="question2" style="" class="question" ng-cloak>select <span>{{guess.guess_mode | uppercase}}</span> {{guess[guess.guess_mode]}}</p>
+		</div>
+
 	</div>
 
-	<!--QUESTIONS-->
-	<div class="questionsBar">
-		<p id="question1" style="" class="question"  ng-cloak>select <span>{{guess.guess_mode | uppercase}}</span> {{guess[guess.guess_mode]}}</p>
-		<p id="question2" style="" class="question" ng-cloak>select <span>{{guess.guess_mode | uppercase}}</span> {{guess[guess.guess_mode]}}</p>
+	<div vertical-aligned style="position: absolute; top: 8em; bottom: 8em; ">
+		<button id="versusBack" class="button icon-left ion-chevron-left button-clear button-light" style="" ng-click="goBack()"></button>
 	</div>
 
+	<!--PLAYER2-->
+	<div style="position: absolute; bottom: 0px; left: 0px; right: 0px; text-align: center">
+		<color-button-container-wrapper quizid="quiz2" guess="guess" words="words" colors="colors" style="max-width: 700px;margin: 0 auto"></color-button-container-wrapper>
+	</div>
 </div>
-
-<div vertical-aligned style="position: absolute; top: 8em; bottom: 8em; ">
-	<button id="versusBack" class="button icon-left ion-chevron-left button-clear button-light" style="" ng-click="goBack()"></button>
-</div>
-
-<!--PLAYER2-->
-<color-button-container-wrapper quizid="quiz2" guess="guess" words="words" colors="colors" style="position: absolute; bottom: 0px; left: 0px; right: 0px">
-</color-button-container-wrapper>
 
 <!--MODALS-->
 <script id="versus-modal.html" type="text/ng-template">

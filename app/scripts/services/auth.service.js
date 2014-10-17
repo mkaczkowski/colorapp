@@ -3,19 +3,13 @@
 angular.module('colorappApp').service('authService', function ScoreService($q, FBURL) {
 
     var _self = this;
-    var fbRef = new Firebase(FBURL+"/users");
+    var fbRef = new Firebase(FBURL + "/users");
 
     var currentUser = { };
 
-    /*var currentUser = { //TEST
-     id : "facebook:10204218045444165",
-     name : "Mariusz",
-     score :
-     };*/
-
     /*SIMPLE LOGIN*/
-    this.createSimpleUser= function(user, callback) {
-        fbRef.createUser(user, function(error) {
+    this.createSimpleUser = function (user, callback) {
+        fbRef.createUser(user, function (error) {
             if (error === null) {
                 console.log("User created successfully");
                 _self.loginSimple(user, callback)
@@ -27,34 +21,34 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
     }
 
     this.loginSimple = function (user, callback) {
-        fbRef.authWithPassword(user, function(error, authData) {
-                    if (error === null) {
-                        fbRef.child(authData.uid).once('value', function (snap) {
-                            var storedUser = snap.val();
-                            if(storedUser){
-                                saveUser(storedUser, callback);
-                            }else{
-                                saveUser(createSimpleUser(authData, user), callback);
-                            }
-                        });
-
+        fbRef.authWithPassword(user, function (error, authData) {
+            if (error === null) {
+                fbRef.child(authData.uid).once('value', function (snap) {
+                    var storedUser = snap.val();
+                    if (storedUser) {
+                        saveUser(storedUser, callback);
                     } else {
-                        console.log("Error authenticating user:", error);
-                        callback(error)
+                        saveUser(createSimpleUser(authData, user), callback);
                     }
-                },{
-                    remember: "never"
-                }
-        )
+                });
+
+            } else {
+                console.log("Error authenticating user:", error);
+                callback(error)
+            }
+        }, {
+            remember: "never"
+        })
     };
 
-    function createSimpleUser(authData, user){
+    function createSimpleUser(authData, user) {
         var newUser = {
             id: 0,
             name: '',
-            full_name:'',
-            picture:'images/unknown.png',
-            score:0
+            full_name: '',
+            picture: 'images/unknown.png',
+            scores: {},
+            score: 0
         }
 
         newUser.id = authData.uid;
@@ -64,25 +58,47 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
 
     /*FACEBOOK LOGIN*/
     this.loginFacebook = function (callback) {
-        fbRef.authWithOAuthPopup("facebook", function(err, authData) {
-                    alert("authWithOAuthPopup:"+err.code+ " :: "+err.message);
-                    if (err) {
-                        if (err.code === "TRANSPORT_UNAVAILABLE") {
-                            fbRef.authWithOAuthRedirect("facebook", authedUser);
-                        }else{
-                            callback(err)
+        if (window.cordova && facebookConnectPlugin) {
+            console.info('facebookConnectPlugin');
+            facebookConnectPlugin.login([], function (status) {
+                console.info('login! :',status);
+                facebookConnectPlugin.getAccessToken(function (token) {
+                    console.info('getAccessToken! :',token);
+                    fbRef.authWithOAuthToken("facebook", token, function (error, authData) {
+                        if (error) {
+                            console.info('Firebase login failed! :',error);
+                            callback(error)
+                        } else {
+                            console.info('Authenticated successfully with payload:', authData);
+                            authedUser(null, authData)
                         }
-                    } else if (authData) {
-                        authedUser(null,authData)
-                    }
-                }
-                ,{
-                    remember: "never"
+                    }, { remember: "never" });
+                }, function (error) {
+                    console.info('Could not get access token:'+error);
+                    callback(error)
                 });
-
+            }, function (error) {
+                callback(error)
+            });
+        } else {
+            console.info('authWithOAuthPopup');
+            fbRef.authWithOAuthPopup("facebook", function (err, authData) {
+                console.info("authWithOAuthPopup:" + err.code + " :: " + err.message);
+                if (err) {
+                    if (err.code === "TRANSPORT_UNAVAILABLE") {
+                        fbRef.authWithOAuthRedirect("facebook", authedUser);
+                    } else {
+                        callback(err)
+                    }
+                } else if (authData) {
+                    authedUser(null, authData)
+                }
+            }, {
+                remember: "never"
+            })
+        }
 
         function authedUser(err, authData) {
-            alert("authedUser:"+err.code+ " :: "+err.message);
             if (err === null && authData) {
                 fbRef.child(authData.uid).once('value', function (snap) {
                     var storedUser = snap.val();
@@ -92,45 +108,26 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
                         saveUser(createFBUser(authData), callback);
                     }
                 })
-            }else{
+            } else {
                 callback(err)
             }
         }
+    }
 
-//        TEST IT!!
-//        var dataRef = new Firebase('https://<your-firebase>.firebaseio.com');
-//        facebookConnectPlugin.login(['public_info'], function(status) {
-//            facebookConnectPlugin.getAccessToken(function(token) {
-//                // Authenticate with Facebook using an existing OAuth 2.0 access token
-//                dataRef.authWithOAuthToken("facebook", token, function(error, authData) {
-//                    if (error) {
-//                        console.log('Firebase login failed!', error);
-//                    } else {
-//                        console.log('Authenticated successfully with payload:', authData);
-//                    }
-//                });
-//            }, function(error) {
-//                console.log('Could not get access token', error);
-//            });
-//        }, function(error) {
-//            console.log('An error occurred logging the user in', error);
-//        });
-
-    };
-
-    function createFBUser(authData){
+    function createFBUser(authData) {
         var newUser = {
             id: 0,
             name: '',
-            full_name:'',
-            picture:'',
-            score:0
+            full_name: '',
+            picture: '',
+            scores: {},
+            score: 0
         }
 
         newUser.id = authData.uid;
-        if(authData.facebook){
+        if (authData.facebook) {
             newUser.full_name = authData.facebook.displayName
-            if(authData.facebook.cachedUserProfile){
+            if (authData.facebook.cachedUserProfile) {
                 newUser.name = authData.facebook.cachedUserProfile.first_name
                 newUser.picture = authData.facebook.cachedUserProfile.picture.data.url
             }
@@ -144,48 +141,56 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
         currentUser = {
             id: "guest",
             name: "Guest",
-            picture:'images/guest.png'
+            picture: 'images/guest.png'
         };
         callback()
     };
 
 
     this.updateUser = function (user, data, callback) {
+        console.info("update data:",data)
         fbRef.child(user.id).update(data, function (err) {
-            console.info("user updated:" ,err)
-            if (err) { console.error(err); }
-            if(callback){callback(err)}
+            console.info("user updated:", err)
+            if (err) {
+                console.error(err);
+            }
+            if (callback) {
+                callback(err)
+            }
         });
     }
 
     /*SAVE USER*/
     function saveUser(user, callback) {
-        console.info("save user",user)
+        console.info("save user", user)
 
-        if(!user.createDate){
+        if (!user.createDate) {
             delete user.password;
             user.createDate = moment(new Date()).format('MM/DD/YYYY HH:mm');
             fbRef.child(user.id).set(user, saveCallback)
-        }
-        else{
+        } else {
             user.lastLogin = moment(new Date()).format('MM/DD/YYYY HH:mm')
-            _self.updateUser(user,{lastLogin : user.lastLogin}, saveCallback);
+            _self.updateUser(user, {lastLogin: user.lastLogin}, saveCallback);
         }
 
         function saveCallback(err) {
-            console.info("user saved:" ,err)
-            if (err) { console.error(err); }
-            else { currentUser = user; }
+            console.info("user saved:", err)
+            if (err) {
+                console.error(err);
+            } else {
+                currentUser = user;
+                currentUser.weekScore = currentUser.scores ? currentUser.scores[parseInt(moment(new Date()).format('WW'))] : 0;
+            }
             callback(err)
         }
     }
 
     /*OTHER*/
-    this.logout = function(callback) {
-        if(currentUser.id != "guest"){
-            fbRef.unauth(function(){
-                if( window.cookies){
-                    window.cookies.clear(function() {
+    this.logout = function (callback) {
+        if (currentUser.id != "guest") {
+            fbRef.unauth(function () {
+                if (window.cookies) {
+                    window.cookies.clear(function () {
                         console.log("Cookies cleared!");
                     });
                 }
@@ -196,26 +201,7 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
         callback();
     }
 
-    this.getUser = function() {
+    this.getUser = function () {
         return currentUser;
     }
 });
-
-/*
- AUTHENTICATION_DISABLED 	The requested authentication provider is disabled for this Firebase.
- EMAIL_TAKEN 	The new user account cannot be created because the specified email address is already in use.
- INVALID_ARGUMENTS 	The specified credentials are malformed or incomplete. Please refer to the error message, error details, and Firebase documentation for the required arguments for authenticating with this provider.
- INVALID_CONFIGURATION 	The requested authentication provider is misconfigured, and the request cannot complete. Please confirm that the provider's client ID and secret are correct in your Firebase Dashboard and the app is properly set up on the provider's website.
- INVALID_CREDENTIALS 	The specified authentication credentials are invalid. This may occur when credentials are malformed or expired.
- INVALID_EMAIL 	The specified email is not a valid email.
- INVALID_ORIGIN 	A security error occurred while processing the authentication request. The web origin for the request is not in your list of approved request origins. To approve this origin, visit the Login & Auth tab in your Firebase dashboard.
- INVALID_PASSWORD 	The specified user account password is incorrect.
- INVALID_PROVIDER 	The requested authentication provider does not exist. Please consult the Firebase authentication documentation for a list of supported providers.
- INVALID_TOKEN 	The specified authentication token is invalid. This can occur when the token is malformed, expired, or the Firebase secret that was used to generate it has been revoked.
- INVALID_USER 	The specified user account does not exist.
- NETWORK_ERROR 	An error occurred while attempting to contact the authentication server.
- PROVIDER_ERROR 	A third-party provider error occurred. Please refer to the error message and error details for more information.
- TRANSPORT_UNAVAILABLE 	The requested login method is not available in the user's browser environment. Popups are not available in Chrome for iOS, iOS Preview Panes, or local, file:// URLs. Redirects are not available in PhoneGap / Cordova, or local, file:// URLs.
- UNKNOWN_ERROR 	An unknown error occurred. Please refer to the error message and error details for more information.
- USER_CANCELLED 	The current authentication request was cancelled by the user.
- USER_DENIED 	The user did not authorize the application. This error can occur when the user has cancelled an OAuth authentication request.*/

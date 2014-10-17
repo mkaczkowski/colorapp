@@ -242,60 +242,59 @@ ul.ranking > li > span.title  {
 	position: absolute !important;
 }
 
-@media screen  and (max-device-height: 460px) and (min-device-width: 533px) and (orientation: landscape){
 
-	.scoreboardwrapper{
-		top: 8em !important;
-		bottom: 8em !important;
-	}
-
-	#question1{
-		top: -40px !important;
-		left: 160px;
-		font-size: 1.2em !important;
-	}
-
-	#question2{
-		top: -100px !important;
-		left: -160px;
-		font-size: 1.2em !important;
-	}
+/*PHONE - LANDSCAPE*/
+.mobi.phone.landscape .scoreboardwrapper, .pc.css-1000-l .scoreboardwrapper{
+	top: 8em !important;
+	bottom: 8em !important;
 }
 
-@media screen  and (max-device-height: 375px) and (min-device-width: 533px) {
-	.buttoner {
+.mobi.phone.landscape #question1, .pc.css-1000-l #question1{
+	top: -40px !important;
+	left: 160px;
+	font-size: 1.2em !important;
+}
+
+.mobi.phone.landscape #question2, .pc.css-1000-l #question2{
+	top: -100px !important;
+	left: -160px;
+	font-size: 1.2em !important;
+}
+
+.mobi.phone.landscape #authWrapper, .pc.css-1000-l #authWrapper{
+	padding-top: 0px !important;
+}
+
+.mobi.phone.landscape #viewWrapper, .pc.css-1000-l #viewWrapper{
+	top :0 !important;
+}
+
+@media screen and (max-height: 375px){
+	.mobi.phone.landscape #versus .buttoner, .pc #versus .buttoner{
 		font-size: 1.1em !important;
 		padding: .50em 1.1em 0.65em;
 	}
 }
 
-@media screen  and (max-device-height: 460px) and (min-device-width: 620px){
-	.buttoner {
-		font-size: 1.1em !important;
-	}
+/*HOME BUTTON*/
+.mobi.phone.landscape .home-button, .pc.landscape .home-button{
+	display: inline-block !important;
+	max-width: 220px  !important;
 }
 
-@media screen  and (min-device-width: 700px) and (min-device-height: 700px){
-	.buttoner {
-		font-size: 1.8em !important;
-	}
-
-	.question{
-		font-size: 2.5em !important;
-	}
-
-	#question1{
-		top: -120px
-	}
-
-	#question2{
-		top: -50px;
-	}
+/*TABLET*/
+.mobi.tablet .buttoner , .pc.css-10000 .buttoner {
+	font-size: 1.8em !important;
 }
 
-@media screen  and (max-device-height: 400px) and (min-device-width: 530px){
-	.home-button{
-		display: inline-block !important;
-		max-width: 220px  !important;
-	}
+.mobi.tablet .question, .pc.css-10000 .question{
+	font-size: 2.5em !important;
+}
+
+.mobi.tablet #question1, .pc.css-10000 #question1{
+	top: -110px !important;
+}
+
+.mobi.tablet #question2, .pc.css-10000 #question2{
+	top: -50px  !important;
 }

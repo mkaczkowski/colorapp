@@ -41,15 +41,15 @@
 				<!--NEW RECORD-->
 				<div ng-show="isNewRecord" style="padding-top: 10px">
 					<div ng-show="!scorePublished">
-						<p>Your new <span style="color: #F0B840;font-family: GothamMedium">BEST SCORE</span><br>Send it to our leaderboard.</p>
+						<p>Your best <span style="color: #F0B840;font-family: GothamMedium">WEEK SCORE</span><br>Send it to our leaderboard.</p>
 						<button class="button button-outline  button-rounded button-energized icon-left ion-trophy"
 								style="text-align: left; margin: 0 10px 0 5px" ng-click="publishScore()">
 							<span style="padding-left: 10px;font-family: GothamMedium">Send</span>
 						</button>
 					</div>
 					<div ng-show="scorePublished" style="font-family: GothamMedium">
-						<p>Score published!</p>
-						<a href="#" ui-sref="ranking">RANKING</a>
+						<span style="color:#F0B840">Score published!</span>
+						<!--<a href="#" style="font-family: GothamMedium"  class="button button-clear button-energized icon-left ion-play"  ui-sref="ranking">TOP 10</a>-->
 					</div>
 				</div>
 			</div>
