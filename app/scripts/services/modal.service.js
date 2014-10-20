@@ -13,23 +13,23 @@ angular.module('colorappApp')
             var _self = this;
             var modals = {}
 
-            function openModal(name, scope){
+            function openModal(name, scope, newConfig){
+
+                var config = newConfig ? newConfig : {
+                    scope: scope,
+                    animation: 'slide-in-up',
+                    backdropClickToClose: false,
+                    hardwareBackButtonClose: false
+                };
+
                 var modal = modals[name];
                 if(modal && !modal.isShown){
                     modal.show(); return;
                 }
 
-                $ionicModal.fromTemplateUrl(name, {
-                    scope: scope,
-                    animation: 'slide-in-up',
-                    backdropClickToClose: false,
-                    hardwareBackButtonClose: false
-                }).then(function(value) {
-                    console.info("modal ok")
+                $ionicModal.fromTemplateUrl(name, config).then(function(value) {
                     modals[name] = value;
                     scope.$on('$destroy', function() { modals[name].remove(); });
-                    scope.$on('modal.hidden', function() { });
-                    scope.$on('modal.removed', function() { });
                     modals[name].show();
                 });
             };
@@ -56,7 +56,28 @@ angular.module('colorappApp')
                 if(modal && modal.isShown()){modals[name].hide()}
             }
 
+            this.showLanguageModal = function(scope){
+                var name = "language-modal.html"
+
+                var config = {
+                    scope: scope,
+                    animation: 'slide-in-up',
+                    backdropClickToClose: true,
+                    hardwareBackButtonClose: true
+                };
+
+                openModal(name,scope, config)
+            }
+
+            this.hideLanguageModal = function(){
+                var name = "language-modal.html"
+                var modal = modals[name];
+                if(modal && modal.isShown()){modals[name].hide()}
+            }
+
+
             this.hideAll = function(){
+                _self.hideLanguageModal();
                 _self.hideVersusModal();
                 _self.hideFailureModal();
             }

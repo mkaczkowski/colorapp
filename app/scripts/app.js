@@ -1,16 +1,18 @@
 'use strict';
 
 angular.module('colorappApp', [
-            'ui.router',
-            'ngAnimate',
-            'ngTouch',
-            'ngRoute',
-            'ionic',
-            'firebase',
-            'colorappApp.config'
-        ])
-        .config(function ($urlRouterProvider, $stateProvider) {
-
+    'ngCordova',
+    'ui.router',
+    'ngCookies',
+    'ngAnimate',
+    'ngTouch',
+    'ngRoute',
+    'ionic',
+    'firebase',
+    'pascalprecht.translate',
+    'colorappApp.config'
+])
+        .config(function ($urlRouterProvider, $stateProvider, $translateProvider) {
             $stateProvider
                     .state('home', {
                         url: '/home',
@@ -45,6 +47,11 @@ angular.module('colorappApp', [
 
             $urlRouterProvider.otherwise('/home');
 
+            //GLOBALIZATION CONFIG
+            $translateProvider.useStaticFilesLoader({ prefix: 'locale/locale-', suffix: '.json' });
+            $translateProvider.useLoaderCache(true);
+            $translateProvider.useLocalStorage();
+            $translateProvider.preferredLanguage('en');
         })
         .factory('loadingService', function($ionicLoading) {
             var loadingService = {};
@@ -52,8 +59,9 @@ angular.module('colorappApp', [
             loadingService.hide = function(){ $ionicLoading.hide() };
             return loadingService;
         })
-        .run(function($rootScope, $ionicPlatform, $state, timerService, modalService) {
+        .run(function($rootScope, $ionicPlatform, $state, timerService, modalService, localeService) {
             console.info("APP init");
+
             $rootScope.safeApply = function(fn) {
                 var phase = this.$root.$$phase;
                 if(phase == '$apply' || phase == '$digest') {
@@ -77,6 +85,8 @@ angular.module('colorappApp', [
                  $timeout(function(){
                  admobService.showHomeAd();
                  },100);*/
+
+                localeService.getLanguage();
             });
 
             $rootScope.goBack = function(){
@@ -86,7 +96,6 @@ angular.module('colorappApp', [
                 } else {
                     timerService.stopTimer();
                     modalService.hideAll();
-                    //$rootScope.addGlass();
                     $state.go("home");
                 }
             }
@@ -97,24 +106,25 @@ angular.module('colorappApp', [
             }, 100);
 
             $('body').restive({
-                onReady: function(){console.info("I'M READY WHEN YOU ARE!");},
-                onResize: function(){console.info("I JUST GOT RESIZED!");},
-                onRotate: function(){console.info("I JUST GOT ROTATED!");},
-                onRotateToP: function(){console.info("I JUST GOT ROTATED TO PORTRAIT!");},
-                onRotateToL: function(){console.info("I JUST GOT ROTATED TO LANDSCAPE!");},
-                onRetina: function(){console.info("I CANNOT BE MORE CLEAR-EYED!");},
-                onPortrait: function(){console.info("I AM TALLER THAN I AM WIDE!");},
-                onLandscape: function(){console.info("I AM WIDER THAN I AM TALL!");},
-                onPhone: function(){console.info("I AM A PHONE!");},
-                onTablet: function(){console.info("I AM A TABLET!");},
-                onTV: function(){console.info("I AM A TELEVISION!");},
-                onPC: function(){console.info("I AM NOT A PHONE, TABLET, OR TV!");},
-                onMobile: function(){console.info("I AM MOBILE!");},
-                onNonMobile: function(){console.info("I AM NOT MOBILE!");},
                 breakpoints: ['240', '320','360', '1000-l', '10000'],
                 classes: ['css-240', 'css-320','css-360','css-1000-l','css-10000'],
                 turbo_classes: 'is_mobile=mobi,is_phone=phone,is_tablet=tablet,is_landscape=landscape,is_pc=pc',
                 force_dip: true
             });
+
+            /*  onReady: function(){console.info("I'M READY WHEN YOU ARE!");},
+             onResize: function(){console.info("I JUST GOT RESIZED!");},
+             onRotate: function(){console.info("I JUST GOT ROTATED!");},
+             onRotateToP: function(){console.info("I JUST GOT ROTATED TO PORTRAIT!");},
+             onRotateToL: function(){console.info("I JUST GOT ROTATED TO LANDSCAPE!");},
+             onRetina: function(){console.info("I CANNOT BE MORE CLEAR-EYED!");},
+             onPortrait: function(){console.info("I AM TALLER THAN I AM WIDE!");},
+             onLandscape: function(){console.info("I AM WIDER THAN I AM TALL!");},
+             onPhone: function(){console.info("I AM A PHONE!");},
+             onTablet: function(){console.info("I AM A TABLET!");},
+             onTV: function(){console.info("I AM A TELEVISION!");},
+             onPC: function(){console.info("I AM NOT A PHONE, TABLET, OR TV!");},
+             onMobile: function(){console.info("I AM MOBILE!");},
+             onNonMobile: function(){console.info("I AM NOT MOBILE!");},*/
         })
 

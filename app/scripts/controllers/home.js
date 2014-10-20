@@ -1,6 +1,27 @@
 'use strict';
 angular.module('colorappApp')
-        .controller('HomeCtrl', function ($scope, modalService, authService, $state) {
+        .controller('HomeCtrl', function ($scope, modalService, authService, $state, localeService) {
+
+            $scope.selectedLang;
+
+            $scope.$watch( function () { return localeService.data.selectedLang }, function (data) {
+                console.info("lang changed1:",localeService)
+                $scope.selectedLang = data;
+            }, true);
+
+            $scope.langs = [
+                {value:"ar", label:"العربية"},
+                {value:"ch", label:"中文"},
+                {value:"jp", label:"日本語"},
+                {value:"de", label:"Deutsch"},
+                {value:"en", label:"English"},
+                {value:"es", label:"Español"},
+                {value:"fr", label:"Français"},
+                {value:"it", label:"Italiano"},
+                {value:"pl", label:"Polski"},
+                {value:"pt", label:"Português"},
+                {value:"ru", label:"Русский Язык"}
+            ]
 
             $scope.user = authService.getUser();
             $scope.isVersus = false;
@@ -41,6 +62,15 @@ angular.module('colorappApp')
                         $scope.user = authService.getUser();
                     })
                 });
+            };
+
+            $scope.chooseLanguage = function () {
+                modalService.showLanguageModal($scope)
+            };
+
+            $scope.changeLanguage = function (key) {
+                localeService.changeLanguage(key);
+                modalService.hideLanguageModal()
             };
 
             $scope.cos = false;
