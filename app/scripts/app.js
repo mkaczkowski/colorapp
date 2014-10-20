@@ -86,7 +86,9 @@ angular.module('colorappApp', [
                  admobService.showHomeAd();
                  },100);*/
 
-                localeService.getLanguage();
+                if(!localeService.data.selectedLang){
+                    localeService.getLanguage();
+                }
             });
 
             $rootScope.goBack = function(){
@@ -110,6 +112,10 @@ angular.module('colorappApp', [
                 classes: ['css-240', 'css-320','css-360','css-1000-l','css-10000'],
                 turbo_classes: 'is_mobile=mobi,is_phone=phone,is_tablet=tablet,is_landscape=landscape,is_pc=pc',
                 force_dip: true
+            });
+
+            $rootScope.$on('$translateChangeEnd', function(event, data) {
+                localeService.data.selectedLang = data.language;
             });
 
             /*  onReady: function(){console.info("I'M READY WHEN YOU ARE!");},
