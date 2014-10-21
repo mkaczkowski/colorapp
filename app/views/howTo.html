@@ -9,10 +9,11 @@
 
 			<div style="clear: both; padding-top: 1em">
 				<span class="line"></span>
-				<span class="or" style="font-family: GothamMedium; font-size: 1.2em;position: relative; top: 5px;">HOW TO PLAY</span>
+				<span class="or" style="font-family: GothamMedium; font-size: 1.2em;position: relative; top: 5px;">{{ 'HOW_TO_PLAY' | translate }}</span>
 			</div>
 
-			<span style="font-size: 1.1em;  line-height: 45px; color: #eaeaea">1. Select <b>COLOR</b> purple</span>
+
+			<span style="font-size: 1.1em;  line-height: 45px; color: #eaeaea">1. {{ 'SELECT' | translate }} <b>{{ 'COLOR' | translate }}</b> {{ 'PURPLE' | translate }}</span>
 			<div class="tableWrapper" style="width: 100%;">
 				<color-button position="bottom-left" word="orange" color="purple" mode="label" extra="padding: 0.7em">
 					<span class="icon ion-checkmark-circled" style="font-size: 1.8em; color: #008000; position: absolute; top:0.1em; right: 0.15em"></span>
@@ -21,7 +22,7 @@
 				</color-button>
 			</div>
 
-			<span style="font-size: 1.1em;  line-height: 45px; color: #eaeaea">2. Select <b>WORD</b> purple</span>
+			<span style="font-size: 1.1em;  line-height: 45px; color: #eaeaea">2. {{ 'SELECT' | translate }} <b>{{ 'WORD' | translate }}</b> {{ 'PURPLE' | translate }}</span>
 			<div class="tableWrapper" style="width: 100%;">
 				<color-button position="top-left" word="yellow" color="purple" mode="full" extra="padding: 0.7em">
 				</color-button>
@@ -32,12 +33,12 @@
 
 			<div style="clear: both; padding-top: 3em">
 				<span class="line"></span>
-				<span class="or" style="font-family: GothamMedium; font-size: 1.2em;position: relative; top: 5px;">TEST YOUR SKILL</span>
+				<span class="or" style="font-family: GothamMedium; font-size: 1.2em;position: relative; top: 5px;">{{ 'TEST_YOUR_SKILL' | translate }}</span>
 			</div>
 
 			<div style="clear: both" >
 				<div style="height: 35px;">
-					<span style="font-size: 1.1em;  line-height: 45px; color: #eaeaea">2. Select <b>WORD</b> blue</span>
+					<span style="font-size: 1.1em;  line-height: 45px; color: #eaeaea">2. {{ 'SELECT' | translate }} <b>{{ 'WORD' | translate }}</b> {{ 'BLUE' | translate }}</span>
 					<span class="icon ion-checkmark-circled" style="font-size: 27px; color: #008000; position: relative; top: 3px;" ng-show="answer2 == true" ></span>
 					<span class="icon ion-close-circled" style="font-size: 27px; color: #C50E0E; position: relative; top: 3px;" ng-show="answer2 == false"></span>
 				</div>
@@ -49,7 +50,7 @@
 
 			<div style="clear: both;padding-top: 0.1em; ">
 				<div style="height: 35px;">
-					<span style="font-size: 1.1em;  line-height: 45px; color: #eaeaea">1. Select <b>COLOR</b> orange</span>
+					<span style="font-size: 1.1em;  line-height: 45px; color: #eaeaea">1. {{ 'SELECT' | translate }} <b>{{ 'COLOR' | translate }}</b> {{ 'ORANGE' | translate }}</span>
 					<span class="icon ion-checkmark-circled" style="font-size: 27px; color: #008000; position: relative; top: 3px;" ng-show="answer1 == true" ></span>
 					<span class="icon ion-close-circled" style="font-size: 27px; color: #C50E0E; position: relative; top: 3px;" ng-show="answer1 == false"></span>
 				</div>
@@ -60,7 +61,7 @@
 			</div>
 
 			<button class="button button-outline button-block button-rounded button-balanced icon-left ion-chevron-right" style="position: relative; top: 1em"  ng-click="goToplay()">
-				<span style="padding-left: 10px;font-family: GothamMedium">PLAY</span>
+				<span style="padding-left: 10px;font-family: GothamMedium">{{ 'PLAY' | translate }}</span>
 			</button>
 
 		</div>

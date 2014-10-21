@@ -20,7 +20,8 @@
     "angular-translate": "~2.4.1",
     "angular-translate-storage-local": "~2.4.1",
     "angular-cookies": "~1.3.0",
-    "angular-translate-loader-static-files": "~2.4.1"
+    "angular-translate-loader-static-files": "~2.4.1",
+    "jquery-bigtext": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",

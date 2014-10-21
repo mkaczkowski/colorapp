@@ -79,7 +79,6 @@ angular.module('colorappApp')
                     $scope.$on('newquiz',function () {
                         console.info("newquiz:"+$scope.quizid)
                         var documentElement = angular.element(document.getElementById($scope.quizid));
-
                         var newElement = angular.element(document.createElement('color-button-container'));
                         var quizContainer = $compile(newElement)( $scope )
 
@@ -93,12 +92,37 @@ angular.module('colorappApp')
                                 $timeout(function(){
                                     documentElement.empty();
                                     documentElement.append(quizContainer);
+                                    updateFontSize();
                                 },200);
                             });
                         }else{
                             documentElement.append(quizContainer);
+                            updateFontSize();
                         }
 
+                        function updateFontSize() {
+                            var scaleTexts  = $('.button-color');
+                            scaleTexts.each(function()
+                            {
+                                var $scaleText = $(this);
+                                var textWidth = $scaleText.find("span").width(),
+                                        fitWidth = $scaleText.width() - 37;
+
+                                if (textWidth > fitWidth) {
+                                    var scaleTo = fitWidth / textWidth,
+                                            offset = (fitWidth - textWidth)/2;
+
+                                    $scaleText.find("span").css({
+                                        '-moz-transform': 'scale3d('+scaleTo+','+scaleTo+',1)',
+                                        '-webkit-transform': 'scale3d('+scaleTo+','+scaleTo+',1)',
+                                        '-o-transform': 'scale3d('+scaleTo+','+scaleTo+',1)',
+                                        'transform': 'scale3d('+scaleTo+','+scaleTo+',1)',
+                                        'margin-left': offset,
+                                        'display': 'inline-block'
+                                    });
+                                }
+                            });
+                        }
                         isActive = true;
                     })
                 }

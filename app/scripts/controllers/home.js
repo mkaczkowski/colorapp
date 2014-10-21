@@ -71,6 +71,7 @@ angular.module('colorappApp')
             $scope.changeLanguage = function (key) {
                 localeService.changeLanguage(key);
                 modalService.hideLanguageModal()
+
             };
 
             $scope.cos = false;
@@ -81,5 +82,4 @@ angular.module('colorappApp')
                     $('#animationSandbox').attr("class","");
                 });
             };
-
         })

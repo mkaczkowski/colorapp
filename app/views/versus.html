@@ -1,5 +1,5 @@
 <!--PLAYER1-->
-<div id="versus" style="position: absolute; top: 0px; left: 0px; right: 0px;">
+<div id="versus" style="position: absolute; top: 0; left: 0; right: 0;bottom: 0">
 	<div style="transform: rotate(180deg);-webkit-transform:rotate(180deg);position: absolute; top: 0px; left: 0px; right: 0px; text-align: center">
 		<color-button-container-wrapper quizid="quiz1" guess="guess" words="words" colors="colors" style="max-width: 700px;margin: 0 auto"></color-button-container-wrapper>
 	</div>
@@ -25,8 +25,8 @@
 
 		<!--QUESTIONS-->
 		<div class="questionsBar">
-			<p id="question1" style="" class="question"  ng-cloak>select <span>{{guess.guess_mode | uppercase}}</span> {{guess[guess.guess_mode]}}</p>
-			<p id="question2" style="" class="question" ng-cloak>select <span>{{guess.guess_mode | uppercase}}</span> {{guess[guess.guess_mode]}}</p>
+			<span id="question1" style="display: inline-block" class="question"  ng-cloak>{{ 'SELECT' | translate }} <span>{{guess.guess_mode | uppercase | translate}}</span> {{guess[guess.guess_mode] | uppercase | translate}}</span>
+			<span id="question2" style="display: inline-block" class="question" ng-cloak>{{ 'SELECT' | translate }} <span>{{guess.guess_mode | uppercase | translate}}</span> {{guess[guess.guess_mode] | uppercase | translate}}</span>
 		</div>
 
 	</div>
@@ -73,12 +73,12 @@
 				<ul class="list buttonbar " style="margin: 0 auto">
 					<li class="item">
 						<button class="button button-outline button-block button-rounded button-light  icon-left ion-home" ng-click="goBack()">
-							<span style="font-family: GothamMedium">Home</span>
+							<span style="font-family: GothamMedium">{{ 'HOME' | translate }}</span>
 						</button>
 					</li>
 					<li class="item">
 						<button class="button button-outline button-block button-rounded button-balanced  icon-left ion-game-controller-b"  ng-click="remach()">
-							<span style="font-family: GothamMedium">Remach</span>
+							<span style="font-family: GothamMedium">{{ 'REMACH' | translate }}</span>
 						</button>
 					</li>
 				</ul>

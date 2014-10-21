@@ -10,8 +10,8 @@
 		</div>
 		<p style="font-size: 1.5em; padding-top: 0.5em;margin-bottom: 0.2em;">{{user.name}}</p>
 		<div style="font-size: 1.1em" >
-			<p ng-show="user.id == 'guest'">Playing as a Guest you can't share your score.</p>
-			<p ng-show="user.id != 'guest'">Best score: <b style="font-size: 1.1em">{{user.score}}</b> / Week score: <b style="font-size: 1.1em">{{user.weekScore}}</b></p>
+			<p ng-show="user.id == 'guest'">{{ 'GUEST_INFO' | translate }}</p>
+			<p ng-show="user.id != 'guest'">{{ 'BEST_SCORE' | translate }} <b style="font-size: 1.1em">{{user.score}}</b> / {{ 'WEEK_SCORE' | translate }} <b style="font-size: 1.1em">{{user.weekScore}}</b></p>
 		</div>
 	</div>
 

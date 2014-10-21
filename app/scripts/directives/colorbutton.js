@@ -7,13 +7,14 @@
  * # colorButton
  */
 angular.module('colorappApp')
-        .directive('colorButton', function () {
+        .directive('colorButton', function ($translate) {
             return {
-                template: '<div class="{{position}}" style="width: 50%"> <button class="buttoner large regular button-block {{colorClass}}" style="{{extra}}" data-color="{{color}}" data-word="{{word}}" style="margin: 0;width: 100%">{{word}}<span ng-transclude></span></button></div>',
+                template: '<div class="button-color {{position}}" style="width: 50%"> <button class="buttoner large regular button-block {{colorClass}}" style="{{extra}}" data-color="{{color}}" data-word="{{word}}" style="margin: 0;width: 100%"><span>{{word_label}}</span><span ng-transclude></span></button></div>',
                 restrict: 'E',
                 scope: {
                     position: "@position",
                     word: "@word",
+                    word_label: "@word_label",
                     color: "@color",
                     mode: "@mode",
                     extra: "@extra",
@@ -21,7 +22,12 @@ angular.module('colorappApp')
                 },
                 transclude:true,
                 controller: function($scope){
+                    console.info("colorbutton")
                     $scope.colorClass = $scope.color+"-"+$scope.mode
+                    $translate($scope.word.toUpperCase()).then(function (word) {
+                        $scope.word_label = word;
+                        console.info("label:"+word)
+                    });
                 },
                 replace: true,
                 link: function postLink(scope, element, attrs) {
@@ -32,7 +38,6 @@ angular.module('colorappApp')
                         });
                     }
 
-//                    element.text('this is the colorButton directive');
                 }
             };
         })

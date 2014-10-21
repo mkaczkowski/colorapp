@@ -1,10 +1,10 @@
 'use strict';
 angular.module('colorappApp')
-        .controller('QuizCtrl', function ($scope, $compile, $timeout, $stateParams, timerService, modalService, $state, scoreService) {
+        .controller('QuizCtrl', function ($scope, $compile, $timeout, $stateParams, timerService, modalService, $state, scoreService, $translate) {
 
             var timeout;
             var lvl = 0;
-            var lvls = {0: 15, 2: 10, 3: 8, 4: 7, 5: 5, 7: 4, 10:3, 15: 2} //lvl : secs
+            var lvls = {0: 115, 2: 10, 3: 8, 4: 7, 5: 5, 7: 4, 10:3, 15: 2} //lvl : secs
 
             var button_modes = [ "full", "label" ]
             var guess_modes = [ "color", "word" ]
@@ -68,8 +68,10 @@ angular.module('colorappApp')
                 }else{
                     timerService.stopTimer();
                     $timeout(function(){
-                        $scope.modalTitle = "Wrong Answer!"
-                        $scope.showFailure()
+                        $translate("WRONG_ANSWER").then(function (result) {
+                            $scope.modalTitle = result;
+                            $scope.showFailure()
+                        });
                     }, 500);
                 }
             })
@@ -82,8 +84,10 @@ angular.module('colorappApp')
                 if(players.length > 1){
                     $scope.nextGuess();
                 }else{
-                    $scope.modalTitle = "Time Out!"
-                    $scope.showFailure()
+                    $translate("TIME_OUT").then(function (result) {
+                        $scope.modalTitle = result;
+                        $scope.showFailure()
+                    });
                 }
 
             }

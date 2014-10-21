@@ -41,9 +41,12 @@
 			</button>
 		</li>
 	</ul>
+	<div  style="height: 40px; background-color: wheat">
+		<span id="bigtext">Makes Text Big</span>
+	</div>
 </div>
 
-<span style="position: absolute; right: 0; bottom: 0">
+<span style="position: absolute; right: 0; bottom: 0" ng-show="selectedLang">
 	<button class="button button-outline button-block button-rounded button-stable" style="margin: 0; padding: 0; width: 45px; height: 36px; min-height: 30px; min-width: 30px;"
 			ng-click="chooseLanguage()">
 		<img ng-src="{{'images/flags/'+selectedLang+'.png'}}" style="width: 40px; position: relative; top: -1px;">

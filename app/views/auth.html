@@ -7,13 +7,14 @@
 			<div class="social-logins">
 				<button class="button button-outline button-block button-rounded button-positive  icon-left ion-social-facebook-outline"
 						style="text-align: left" ng-click="loginFacebook()">
-					<span ng-show="!workingOAuth" style="padding-left: 15px;font-family: GothamMedium">Sign In with Facebook</span>
+					<span ng-show="!workingOAuth" style="padding-left: 15px;font-family: GothamMedium">{{ 'SIGN_FB' | translate }}</span>
+
 					<div ng-show="workingOAuth" style="text-align: center;">
 						<span class="icon ion-loading-c"></span>
 					</div>
 				</button>
 				<button class="button button-outline button-block button-rounded button-royal  icon-left ion-ios7-person-outline" style="text-align: left; margin-bottom: 0" ng-click="loginAsGuest()">
-					<span ng-show="!workingGuest" style="padding-left: 10px;font-family: GothamMedium">Play as a Guest</span>
+					<span ng-show="!workingGuest" style="padding-left: 10px;font-family: GothamMedium">{{ 'SIGN_GUEST ' | translate }}</span>
 					<div ng-show="workingGuest" style="text-align: center;">
 						<span class="icon ion-loading-c"></span>
 					</div>
@@ -22,7 +23,7 @@
 		</li>
 		<li>
 			<span class="line"></span>
-			<span class="or" style="font-family: GothamMedium">or</span>
+			<span class="or" style="font-family: GothamMedium">{{ 'OR ' | translate }}</span>
 		</li>
 		<li class="item" style="max-width: 300px;margin: 0 auto; position: relative; top: -5px">
 			<form class="auth-form" ng-show="!isSigning" name="signUpForm" ng-submit="signUp(signUpForm.$valid)" novalidate>
@@ -43,12 +44,12 @@
 				</div>
 				<div class="button-wrapper"  style="margin-top: 10px;">
 					<button class="button button-outline button-rounded button-balanced" type="submit" ng-click="submitted = true" style="width: 170px;">
-						<span style="font-family: GothamMedium;" ng-show="!working">Create Account</span>
+						<span style="font-family: GothamMedium;" ng-show="!working">{{ 'CREATE_ACCOUNT' | translate }}</span>
 						<div ng-show="working" style="text-align: center;">
 							<span class="icon ion-loading-c"></span>
 						</div>
 					</button>
-					<button class="button icon-right ion-chevron-right button-clear button-light" style="font-size: 0.9em;font-family: GothamMedium" ng-click="isSigning = true">or log in</button>
+					<button class="button icon-right ion-chevron-right button-clear button-light" style="font-size: 0.9em;font-family: GothamMedium" ng-click="isSigning = true">{{ 'OR_LOG_IN' | translate }}</button>
 				</div>
 			</form>
 
@@ -65,29 +66,23 @@
 				</div>
 				<div class="button-wrapper"  style="margin-top: 10px;">
 					<button class="button button-outline button-rounded button-balanced" style="width: 150px;" type="submit" ng-click="submitted = true">
-						<span style="font-family: GothamMedium"  ng-show="!working">Sign In</span>
+						<span style="font-family: GothamMedium"  ng-show="!working">{{ 'SIGN_IN' | translate }}</span>
 						<div ng-show="working" style="text-align: center;">
 							<span class="icon ion-loading-c"></span>
 						</div>
 					</button>
-					<button class="button icon-right ion-chevron-right button-clear button-light" style="font-size: 0.9em;font-family: GothamMedium" ng-click="isSigning = false">or sign up</button>
+					<button class="button icon-right ion-chevron-right button-clear button-light" style="font-size: 0.9em;font-family: GothamMedium" ng-click="isSigning = false">{{ 'OR_SIGN_UP' | translate }}</button>
 				</div>
 			</form>
 
 			<div ng-show="submitted" style="width: 100%; text-wrap: normal; word-break: normal;
 			word-wrap: normal; color:rgba(212, 38, 38, 1); font-size: 0.9em;white-space: normal;">
-				<!--<div ng-show="signInForm.$invalid">-->
-				<span ng-show="signInForm.username.$error.required">Your name is required.</span>
-				<span ng-show="signInForm.password.$error.required">Password is required.</span>
-				<span ng-show="signInForm.email.$error.required">Email is required.</span>
-				<span ng-show="signInForm.email.$error.$invalid">This is not a valid email.</span>
+				<span ng-show="signInForm.username.$error.required">{{ 'NAME_REQUIRED' | translate }}</span>
+				<span ng-show="signInForm.password.$error.required">{{ 'PASSWORD_REQUIRED' | translate }}</span>
+				<span ng-show="signInForm.email.$error.required">{{ 'EMAIL_REQUIRED' | translate }}</span>
+				<span ng-show="signInForm.email.$error.$invalid">{{ 'EMAIL_INVALID' | translate }}</span>
 				<span ng-show="error.show && error.text" ng-bind="error.text"></span>
 			</div>
-			<!--<div style="margin-top: 15px;">
-				<p style="font-size: 12px; line-height: 18px;text-align: center">
-					By signing up you agree to the <a href="https://www.userapp.io/tos/" target="_blank" title="Terms of Service">terms of service</a><br>and <a href="https://www.userapp.io/privacy/" target="_blank" title="Privacy Policy">privacy policy</a>.
-				</p>
-			</div>-->
 		</li>
 	</ul>
 </div>
@@ -96,18 +91,17 @@
 	<!--USER MODAL-->
 
 	<div style="color: #f5f5f5; margin: 0 auto; max-width: 500px">
-
-		<p style="font-size: 1.2em;font-family: GothamMedium">Welcome {{user.name}}!</p>
+		<p style="font-size: 1.2em;font-family: GothamMedium">{{ 'WELCOME' | translate }} {{user.name}}!</p>
 		<div class="logo box cutout" style="margin: 0px auto; width: 6em; height: 6em;" >
 			<span class="image-wrap" style="width:100%; height:100%; display:inline-block; background: url('{{user.picture}}') no-repeat scroll center center / 100% 100% white;"> </span>
 		</div>
 		<div style="font-size: 1.1em;padding-top: 0.5em" ng-show="user.id != 'guest'">
-			<p>Best score: <b style="font-size: 1.1em">{{user.score}}</b></p>
-			<p>This week score: <b style="font-size: 1.1em">{{user.weekScore}}</b></p>
+			<p>{{ 'BEST_SCORE' | translate }}<b style="font-size: 1.1em">{{user.score}}</b></p>
+			<p>{{ 'WEEK_SCORE' | translate }}<b style="font-size: 1.1em">{{user.weekScore}}</b></p>
 		</div>
 
 		<div style="padding-top: 0.5em" ng-show="user.id == 'guest'">
-			<p>Playing as a Guest you can't share your score.</p>
+			<p>{{ 'GUEST_INFO' | translate }}</p>
 		</div>
 
 		<div style="padding-top: 0.3em">
@@ -116,10 +110,10 @@
 
 		<div style="clear: both;padding-top: 0.3em;max-width: 300px;margin:0 auto;">
 			<button class="button button-outline button-block button-rounded button-positive icon-left ion-help-circled" ng-click="goToHowPlay()">
-				<span style="padding-left: 10px;font-family: GothamMedium">HOW TO PLAY</span>
+				<span style="padding-left: 10px;font-family: GothamMedium">{{ 'HOW_TO_PLAY' | translate }}</span>
 			</button>
 			<button class="button button-outline button-block button-rounded button-balanced icon-left ion-chevron-right"  ng-click="goToQuiz()">
-				<span style="padding-left: 10px;font-family: GothamMedium">PLAY</span>
+				<span style="padding-left: 10px;font-family: GothamMedium">{{ 'PLAY' | translate }}</span>
 			</button>
 		</div>
 	</div>
