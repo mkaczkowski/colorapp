@@ -39,7 +39,8 @@
     "REMACH":"Remach",
     "OR" : "or",
     "WRONG_ANSWER" : "Wrong Answer!",
-    "TIME_OUT" : "Time Out!"
+    "TIME_OUT" : "Time Out!",
+    "GAME_OVER" : "Game Over!"
 }
 
 

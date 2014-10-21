@@ -59,11 +59,8 @@ angular.module('colorappApp').service('authService', function ScoreService($q, F
     /*FACEBOOK LOGIN*/
     this.loginFacebook = function (callback) {
         if (window.cordova && facebookConnectPlugin) {
-            console.info('facebookConnectPlugin');
             facebookConnectPlugin.login([], function (status) {
-                console.info('login! :',status);
                 facebookConnectPlugin.getAccessToken(function (token) {
-                    console.info('getAccessToken! :',token);
                     fbRef.authWithOAuthToken("facebook", token, function (error, authData) {
                         if (error) {
                             console.info('Firebase login failed! :',error);

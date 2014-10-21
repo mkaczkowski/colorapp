@@ -43,8 +43,10 @@ angular.module('colorappApp')
                 if (((mode == 1) && $scope.points['quiz2'] < 100 && $scope.points['quiz1'] < 100) || ((mode == 2) && $scope.points['quiz2'] < 10 && $scope.points['quiz1'] < 10)) {
                     $timeout($scope.nextGuess, 600);
                 } else {
-                    $scope.modalTitle = "Game Over!"
-                    $scope.showFailure()
+                    $scope.modalTitle = ""
+                    $translate("GAME_OVER").then(function (result) {
+                        $scope.showFailure()
+                    });
                 }
             }
 

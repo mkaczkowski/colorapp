@@ -101,27 +101,31 @@ angular.module('colorappApp')
                         }
 
                         function updateFontSize() {
+                            $timeout(function(){
+
+
                             var scaleTexts  = $('.button-color');
                             scaleTexts.each(function()
                             {
                                 var $scaleText = $(this);
-                                var textWidth = $scaleText.find("span").width(),
-                                        fitWidth = $scaleText.width() - 37;
+                                var textWidth = $scaleText.find(".button-label").width(),
+                                        fitWidth = $scaleText.width();
 
                                 if (textWidth > fitWidth) {
                                     var scaleTo = fitWidth / textWidth,
                                             offset = (fitWidth - textWidth)/2;
 
                                     $scaleText.find("span").css({
-                                        '-moz-transform': 'scale3d('+scaleTo+','+scaleTo+',1)',
-                                        '-webkit-transform': 'scale3d('+scaleTo+','+scaleTo+',1)',
-                                        '-o-transform': 'scale3d('+scaleTo+','+scaleTo+',1)',
-                                        'transform': 'scale3d('+scaleTo+','+scaleTo+',1)',
+                                        '-moz-transform': 'scale('+scaleTo+')',
+                                        '-webkit-transform': 'scale('+scaleTo+')',
+                                        '-o-transform': 'scale('+scaleTo+')',
+                                        'transform': 'scale('+scaleTo+')',
                                         'margin-left': offset,
                                         'display': 'inline-block'
                                     });
                                 }
                             });
+                            })
                         }
                         isActive = true;
                     })

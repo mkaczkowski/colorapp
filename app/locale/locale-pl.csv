@@ -1,8 +1,8 @@
 """";PLAY;"""";:;"""";ZAGRAJ;"""";,
 """";VERSUS;"""";:;"""";VERSUS;"""";,
-"""";HOW_TO_PLAY;"""";:;"""";JAK GRAÆ;"""";,
+"""";HOW_TO_PLAY;"""";:;"""";JAK GRAï¿½;"""";,
 """";TOP_10;"""";:;"""";TOP 10;"""";,
-"""";POINTS;"""";:;"""";punktów;"""";,
+"""";POINTS;"""";:;"""";punktï¿½w;"""";,
 """";WINS;"""";:;"""";wygrywa;"""";,
 ;SIGN_FB;"""";:;"""";Sign In with Facebook;"""";,
 ;SIGN_GUEST;"""";:;"""";Play as a Guest;"""";,
@@ -35,3 +35,7 @@
 ;SEND;"""";:;"""";Send;"""";,
 ;HOME;"""";:;"""";Home;"""";,
 ;REMACH;"""";:;"""";Remach;"""";
+;OR;"""";:;"""";or;"""";
+;WRONG_ANSWER;"""";:;"""";Wrong Answer!;"""";
+;TIME_OUT;"""";:;"""";Time Out!;"""";
+;GAME_OVER;"""";:;"""";Game Over!;"""";

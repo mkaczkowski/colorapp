@@ -58,8 +58,8 @@ body {
 	color:white;
 	font-size: 1.6em;
 	padding-top: 0.8em;
-	line-height: 1.2em;
-	white-space: nowrap;
+	line-height: 1em;
+	max-width: 100%;
 }
 
 .question > span {
@@ -230,12 +230,12 @@ ul.ranking > li > span.title  {
 	transform: rotate(180deg);
 	-webkit-transform:rotate(180deg);
 	position: relative;
-	top: -105px
+	top: -155px
 }
 
 #question2{
 	position: relative;
-	top: -45px;
+	top: -105px;
 }
 
 .radialtimer2{
@@ -256,16 +256,19 @@ ul.ranking > li > span.title  {
 	font-size: 1.2em !important;
 	width: 100%;
 	text-align: left;
-	top: -40px;
+	top: -105px;
+	white-space: nowrap;
 }
 
 .mobi.phone.landscape #question2, .pc.css-1000-l #question2{
 	position: relative;
-	left: 20px;
+	margin-left: 20px;
+	left: 0;
 	font-size: 1.2em !important;
 	width: 100%;
 	text-align: left;
-	top: -90px;
+	top: -150px;
+	white-space: nowrap;
 }
 
 .mobi.phone.landscape #authWrapper, .pc.css-1000-l #authWrapper{
@@ -296,17 +299,18 @@ ul.ranking > li > span.title  {
 
 .mobi.tablet .question, .pc.css-10000 .question{
 	font-size: 2.5em !important;
-	line-height: 1.5em;
+	line-height: 1em;
 }
 
 .mobi.tablet #question1, .pc.css-10000 #question1{
 	display: block !important;
 	position: relative !important;
-	top: -130px !important;
+	top: -180px !important;
+
 }
 
 .mobi.tablet #question2, .pc.css-10000 #question2{
 	display: block !important;
 	position: relative !important;
-	top: -90px !important;
+	top: -140px !important;
 }

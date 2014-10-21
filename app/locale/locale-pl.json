@@ -23,8 +23,8 @@
     "SELECT": "Zaznacz",
     "COLOR": "KOLOR",
     "WORD": "SŁOWO",
-    "ORANGE": "pomaranczowy",
-    "PURPLE": "filoetowy",
+    "ORANGE": "pomarańczowy",
+    "PURPLE": "fioletowy",
     "BLUE": "niebieski",
     "WHITE": "biały",
     "RED": "czerwony",
@@ -39,5 +39,6 @@
     "REMACH": "Rewanż",
     "OR" : "lub",
     "WRONG_ANSWER" : "Zła odpowiedź!",
-    "TIME_OUT" : "Koniec czasu!"
+    "TIME_OUT" : "Koniec czasu!",
+    "GAME_OVER" : "Koniec Gry!"
 }
