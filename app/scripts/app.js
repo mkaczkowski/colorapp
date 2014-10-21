@@ -4,7 +4,7 @@ angular.module('colorappApp', [ 'ngCordova', 'ui.router', 'ngCookies', 'ngAnimat
 ]).config(function ($urlRouterProvider, $stateProvider, $translateProvider) {
 
             $stateProvider.state('home', {
-                        url: '/home',
+                        url: '/home?popup',
                         templateUrl: 'views/home.html',
                         controller: 'HomeCtrl'
                     }).state('auth', {
@@ -46,7 +46,7 @@ angular.module('colorappApp', [ 'ngCordova', 'ui.router', 'ngCookies', 'ngAnimat
                 $ionicLoading.hide()
             };
             return loadingService;
-        }).run(function ($rootScope, $ionicPlatform, $state, timerService, modalService, localeService) {
+        }).run(function ($rootScope, $ionicPlatform, $state, timerService, modalService, localeService, networkService) {
             console.info("APP init");
 
             $rootScope.safeApply = function (fn) {
@@ -68,6 +68,9 @@ angular.module('colorappApp', [ 'ngCordova', 'ui.router', 'ngCookies', 'ngAnimat
                     StatusBar.styleDefault();
                 }
 
+
+                networkService.init();
+
                 /*    admobService.init();
                  $timeout(function(){
                  admobService.showHomeAd();
@@ -78,14 +81,15 @@ angular.module('colorappApp', [ 'ngCordova', 'ui.router', 'ngCookies', 'ngAnimat
                 }
             });
 
-            $rootScope.goBack = function () {
-                console.info("goBack:" + $state.current.name);
+            $rootScope.goBack = function (showPopup) {
                 if ($state.current.name == 'home') {
                     navigator.app.exitApp();
                 } else {
                     timerService.stopTimer();
                     modalService.hideAll();
-                    $state.go("home");
+
+                    var config = showPopup ? {"popup":"rate"}: undefined;
+                    $state.go("home",config);
                 }
             }
 

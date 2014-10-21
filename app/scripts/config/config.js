@@ -2,8 +2,8 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('colorappApp.config', [])
-
   .constant('version', '0.8.2')
+  .constant('MARKET_ID', 'com.thaiapps.outfit')
   .constant('loginRedirectPath', '/login')
   .constant('FBURL', 'https://scorching-inferno-5757.firebaseio.com/colorapp')
   .run(['FBURL', '$timeout', function(FBURL, $timeout) {

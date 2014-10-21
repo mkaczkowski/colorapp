@@ -1,6 +1,6 @@
 'use strict';
 angular.module('colorappApp')
-        .controller('QuizCtrl', function ($scope, $compile, $timeout, $stateParams, timerService, modalService, $state, scoreService, $translate) {
+        .controller('QuizCtrl', function ($scope, $compile, $timeout, $stateParams, timerService, modalService, $state, scoreService, $translate, dialogsService) {
 
             var timeout;
             var lvl = 0;

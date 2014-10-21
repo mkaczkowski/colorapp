@@ -251,11 +251,13 @@ ul.ranking > li > span.title  {
 }
 
 
-.mobi.phone.landscape .question > span, .pc.css-1000-l .question > span{
+.mobi.phone.landscape .question > span, .pc.css-1000-l .question > span.question-body{
 	width: 33%;
 	white-space: normal;
 	display: inline-block;
 	text-align: center;
+	font-family: Gotham;
+	line-height: 1.1em;
 }
 
 .mobi.phone.landscape #question1, .pc.css-1000-l #question1{

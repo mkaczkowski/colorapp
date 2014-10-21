@@ -10,8 +10,8 @@
 		</div>
 	</div>
 
-	<div style="color: white">
-		<p style="" class="question" ng-cloak>{{ 'SELECT' | translate }} <span>{{guess.guess_mode | uppercase | translate}}</span> {{guess[guess.guess_mode] | uppercase | translate}}</p>
+	<div style="color: white; position: relative; top: 15px">
+		<span  style="display: inline" class="question"><span style="font-family: Gotham;" ng-cloak>{{ 'SELECT' | translate }} <span>{{guess.guess_mode | uppercase | translate}}</span> {{guess[guess.guess_mode] | uppercase | translate}}</span></span>
 	</div>
 
 </div>
@@ -57,7 +57,7 @@
 			<div  style="padding-top: 10px; max-width: 300px; margin: 0 auto; text-align: center ">
 				<ul class="list buttonbar " style="margin: 0 auto">
 					<li class="item">
-						<button class="button button-outline button-block button-rounded button-light  icon-left ion-home" ng-click="goBack()">
+						<button class="button button-outline button-block button-rounded button-light  icon-left ion-home" ng-click="goBack(points['quiz1'] > 20)">
 							<span style="font-family: GothamMedium">{{ 'HOME' | translate }}</span>
 						</button>
 					</li>

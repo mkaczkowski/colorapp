@@ -1,6 +1,6 @@
 'use strict';
 angular.module('colorappApp')
-        .controller('HomeCtrl', function ($scope, modalService, authService, $state, localeService) {
+        .controller('HomeCtrl', function ($scope, $timeout, modalService, authService, $state, localeService, $stateParams, dialogsService, networkService) {
 
             $scope.selectedLang;
 
@@ -44,7 +44,6 @@ angular.module('colorappApp')
             };
 
             $scope.goToVersus = function (mode) {
-//                $scope.removeGlass();
                 $state.go("versus",{mode:mode})
             };
 
@@ -71,7 +70,6 @@ angular.module('colorappApp')
             $scope.changeLanguage = function (key) {
                 localeService.changeLanguage(key);
                 modalService.hideLanguageModal()
-
             };
 
             $scope.cos = false;
@@ -82,4 +80,27 @@ angular.module('colorappApp')
                     $('#animationSandbox').attr("class","");
                 });
             };
+
+            $scope.showAd = function () {
+                networkService.showInter();
+            };
+
+            $scope.prepareAd = function () {
+                networkService.prepareInter();
+            };
+
+            $scope.showPreparedAd = function () {
+                networkService.showPreparedInter();
+            };
+
+            function init(){
+                var popupParam = $stateParams.popup;
+                if(popupParam){
+                    $timeout(function(){
+                        dialogsService.showMarketPopup()
+                    },500);
+                }
+            }
+
+            init();
         })
