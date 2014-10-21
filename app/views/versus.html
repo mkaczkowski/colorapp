@@ -25,8 +25,8 @@
 
 		<!--QUESTIONS-->
 		<div class="questionsBar">
-			<span id="question1" style="display: inline-block;height: 100px" class="question"  ng-cloak>{{ 'SELECT' | translate }} <span>{{guess.guess_mode | uppercase | translate}}</span> {{guess[guess.guess_mode] | uppercase | translate}}</span>
-			<span id="question2" style="display: inline-block;height: 100px" class="question" ng-cloak>{{ 'SELECT' | translate }} <span>{{guess.guess_mode | uppercase | translate}}</span> {{guess[guess.guess_mode] | uppercase | translate}}</span>
+			<span id="question1" style="display: inline-block;height: 100px" class="question"><span style="	font-family: Gotham;line-height: 1.1em;" ng-cloak>{{ 'SELECT' | translate }} <span>{{guess.guess_mode | uppercase | translate}}</span> {{guess[guess.guess_mode] | uppercase | translate}}</span></span>
+			<span id="question2" style="display: inline-block;height: 100px" class="question"><span style="	font-family: Gotham;line-height: 1.1em;" ng-cloak>{{ 'SELECT' | translate }} <span>{{guess.guess_mode | uppercase | translate}}</span> {{guess[guess.guess_mode] | uppercase | translate}}</span></span>
 		</div>
 
 	</div>
@@ -52,7 +52,7 @@
 				<!--SCORE-->
 				<div class="logo box cutout" style="margin: 0px auto; width: 100px; height: 100px;transform: rotate(180deg);-webkit-transform:rotate(180deg);"  >
 				<span class="image-wrap loser" style="width:100%; height:100%;  display:inline-block; background: no-repeat scroll center center / 100% 100%;" ng-class="{'winner' : points['quiz1'] > points['quiz2']}">
-					<div style="position: relative; top: 24px; font-size: 16px;font-family: GothamMedium">SCORE</div>
+					<div style="position: relative; top: 24px; font-size: 16px;font-family: GothamMedium">{{ 'SCORE' | translate }}</div>
 					<div style="position: relative; top: 31px;  font-size: 35px; font-family: GothamBold">{{points['quiz1']}}</div>
 				</span>
 				</div>
@@ -63,7 +63,7 @@
 
 				<div class="logo box cutout" style="margin: 0px auto; width: 100px; height: 100px;" >
 				<span class="image-wrap loser" style="width:100%; height:100%;  display:inline-block; background: no-repeat scroll center center / 100% 100%;" ng-class="{'winner' : points['quiz2'] > points['quiz1']}">
-					<div style="position: relative; top: 24px; font-size: 16px;font-family: GothamMedium">SCORE</div>
+					<div style="position: relative; top: 24px; font-size: 16px;font-family: GothamMedium">{{ 'SCORE' | translate }}</div>
 					<div style=" position: relative; top: 31px;  font-size: 35px; font-family: GothamBold">{{points['quiz2']}}</div>
 				</span>
 				</div>

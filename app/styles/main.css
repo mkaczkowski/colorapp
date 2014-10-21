@@ -250,13 +250,21 @@ ul.ranking > li > span.title  {
 	bottom: 8em !important;
 }
 
+
+.mobi.phone.landscape .question > span, .pc.css-1000-l .question > span{
+	width: 33%;
+	white-space: normal;
+	display: inline-block;
+	text-align: center;
+}
+
 .mobi.phone.landscape #question1, .pc.css-1000-l #question1{
 	position: relative;
 	right: 0;
-	font-size: 1.2em !important;
+	font-size: 1em !important;
 	width: 100%;
 	text-align: left;
-	top: -105px;
+	top: -112px;
 	white-space: nowrap;
 }
 
@@ -264,7 +272,7 @@ ul.ranking > li > span.title  {
 	position: relative;
 	margin-left: 20px;
 	left: 0;
-	font-size: 1.2em !important;
+	font-size: 1em !important;
 	width: 100%;
 	text-align: left;
 	top: -150px;
@@ -305,12 +313,12 @@ ul.ranking > li > span.title  {
 .mobi.tablet #question1, .pc.css-10000 #question1{
 	display: block !important;
 	position: relative !important;
-	top: -180px !important;
+	top: -150px !important;
 
 }
 
 .mobi.tablet #question2, .pc.css-10000 #question2{
 	display: block !important;
 	position: relative !important;
-	top: -140px !important;
+	top: -110px !important;
 }

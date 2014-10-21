@@ -1,14 +1,4 @@
 'use strict';
-
-/**
- * @ngdoc directive
- * @name colorappApp.directive:colorButton
- * @description
- * # colorButton
- */
-
-//<colorButtonContainerWrapper guess="{{guess}}">
-
 angular.module('colorappApp')
         .directive('colorButtonContainerWrapper', function ($compile, $timeout) {
             return {
@@ -102,29 +92,27 @@ angular.module('colorappApp')
 
                         function updateFontSize() {
                             $timeout(function(){
+                                var scaleTexts  = $('.button-color');
+                                scaleTexts.each(function()
+                                {
+                                    var $scaleText = $(this);
+                                    var textWidth = $scaleText.find(".button-label").width(),
+                                            fitWidth = $scaleText.width();
 
+                                    if (textWidth > fitWidth) {
+                                        var scaleTo = fitWidth / textWidth,
+                                                offset = (fitWidth - textWidth)/2;
 
-                            var scaleTexts  = $('.button-color');
-                            scaleTexts.each(function()
-                            {
-                                var $scaleText = $(this);
-                                var textWidth = $scaleText.find(".button-label").width(),
-                                        fitWidth = $scaleText.width();
-
-                                if (textWidth > fitWidth) {
-                                    var scaleTo = fitWidth / textWidth,
-                                            offset = (fitWidth - textWidth)/2;
-
-                                    $scaleText.find("span").css({
-                                        '-moz-transform': 'scale('+scaleTo+')',
-                                        '-webkit-transform': 'scale('+scaleTo+')',
-                                        '-o-transform': 'scale('+scaleTo+')',
-                                        'transform': 'scale('+scaleTo+')',
-                                        'margin-left': offset,
-                                        'display': 'inline-block'
-                                    });
-                                }
-                            });
+                                        $scaleText.find("span").css({
+                                            '-moz-transform': 'scale('+scaleTo+')',
+                                            '-webkit-transform': 'scale('+scaleTo+')',
+                                            '-o-transform': 'scale('+scaleTo+')',
+                                            'transform': 'scale('+scaleTo+')',
+                                            'margin-left': offset,
+                                            'display': 'inline-block'
+                                        });
+                                    }
+                                });
                             })
                         }
                         isActive = true;
