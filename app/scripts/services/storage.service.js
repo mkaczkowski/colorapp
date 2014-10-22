@@ -14,16 +14,25 @@ angular.module('colorappApp').factory('storageService', function LocaleService($
     };
 
     var getHasRateIt = function (callback) {
-        $cordovaPreferences.get('rateIt').then(function (value) {
-            console.info("getHasRateIt1:"+value);
-            callback(value)
-        })
+        if( cordova && cordova.plugins &&  cordova.plugins.applicationPreferences){
+          cordova.plugins.applicationPreferences.get("rateIt", function(value) {
+                console.info("getHasRateIt1:"+value);
+                callback(value)
+            }, function(error) {
+                console.info("getHasRateIt error:"+JSON.stringify(error));
+                callback(false)
+            });
+        }
     };
 
     var setHasRateIt = function (value) {
-        $cordovaPreferences.set('rateIt',value,function(){
-            console.info("rateIt saved");
-        });
+      if( cordova && cordova.plugins &&  cordova.plugins.applicationPreferences){
+             cordova.plugins.applicationPreferences.set("rateIt", value, function(value) {
+                console.log("set correctly");
+            }, function(error) {
+                console.log(JSON.stringify(error));
+            });
+        }
     };
 
     return {

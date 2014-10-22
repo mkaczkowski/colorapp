@@ -41,7 +41,7 @@
 				<!--NEW RECORD-->
 				<div ng-show="isNewRecord" style="padding-top: 10px">
 					<div ng-show="!scorePublished">
-						<p><span style="color: #F0B840;font-family: GothamMedium">{{ 'SCORE' | translate | uppercase }}</span><br>{{ 'SEND_SCORE' | translate }}</p>
+						<p><span style="color: #F0B840;font-family: GothamMedium">{{ 'NEW_SCORE' | translate | uppercase }}</span><br>{{ 'SEND_SCORE' | translate }}</p>
 						<button class="button button-outline  button-rounded button-energized icon-left ion-trophy"
 								style="text-align: left; margin: 0 10px 0 5px" ng-click="publishScore()">
 							<span style="padding-left: 10px;font-family: GothamMedium">{{ 'SEND' | translate }}</span>
@@ -57,7 +57,7 @@
 			<div  style="padding-top: 10px; max-width: 300px; margin: 0 auto; text-align: center ">
 				<ul class="list buttonbar " style="margin: 0 auto">
 					<li class="item">
-						<button class="button button-outline button-block button-rounded button-light  icon-left ion-home" ng-click="goBack(points['quiz1'] > 20)">
+						<button class="button button-outline button-block button-rounded button-light  icon-left ion-home" ng-click="goBack(points['quiz1'] > 100)">
 							<span style="font-family: GothamMedium">{{ 'HOME' | translate }}</span>
 						</button>
 					</li>

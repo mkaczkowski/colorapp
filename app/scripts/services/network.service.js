@@ -9,7 +9,10 @@ angular.module('colorappApp').factory('networkService', function LocaleService(M
     };
 
     var showMarket = function() {
-        storageService.getHasRateIt(function(value){
+      if(cordova && cordova.plugins && cordova.plugins.market){
+        cordova.plugins.market.open(MARKET_ID);
+      }
+      /*  storageService.getHasRateIt(function(value){
                     console.info("getHasRateIt:"+value);
                     if(!value){
                         storageService.setHasRateIt(true);
@@ -17,7 +20,7 @@ angular.module('colorappApp').factory('networkService', function LocaleService(M
                             cordova.plugins.market.open(MARKET_ID);
                         }}
                 }
-        );
+        );*/
     };
 
 
@@ -31,7 +34,7 @@ angular.module('colorappApp').factory('networkService', function LocaleService(M
             isTesting: true
         };
 
-        if (! window.AdMob ) { alert( 'admob plugin not ready' ); return; }
+        if (! window.AdMob ) { console.error( 'admob plugin not ready' ); return; }
 
         AdMob.setOptions( defaultOptions );
         registerAdEvents();
