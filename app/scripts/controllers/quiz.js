@@ -1,6 +1,6 @@
 'use strict';
 angular.module('colorappApp')
-        .controller('QuizCtrl', function ($scope, $compile, $timeout, $stateParams, timerService, modalService, $state, scoreService, $translate, dialogsService) {
+        .controller('QuizCtrl', function ($scope, $compile, $timeout, $stateParams, timerService, modalService, $state, scoreService, authService, $translate) {
 
             var timeout;
             var lvl = 0;
@@ -15,6 +15,7 @@ angular.module('colorappApp')
             var players = $state.current.name == "versus" ? ["quiz1","quiz2"] : ["quiz1"]
             var mode = parseInt($stateParams.mode);
 
+            $scope.user = authService.getUser();
             $scope.guess = undefined;
             $scope.modalTitle = ""
             $scope.scorePublished = false;

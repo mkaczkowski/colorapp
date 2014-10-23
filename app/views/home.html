@@ -13,12 +13,12 @@
 		</li>
 		<li class="item home-button">
 			<button class="button button-outline button-block button-rounded button-balanced  icon-left ion-game-controller-b" style="text-align: left;min-width: 200px;" ng-click="play()">
-				<span style="padding-left: 10px;font-family: GothamMedium">{{ 'PLAY' | translate }}</span>
+				<span style="padding-left: 10px;font-family: GothamMedium">{{ 'PLAY' | translate | uppercase}}</span>
 			</button>
 		</li>
 		<li class="item home-button">
 			<button class="button button-outline button-block button-rounded button-royal  icon-left ion-person-stalker" style="text-align: left;min-width: 200px" ng-click="isVersus = !isVersus">
-				<span style="padding-left: 10px;font-family: GothamMedium">{{ 'VERSUS' | translate }}</span>
+				<span style="padding-left: 10px;font-family: GothamMedium">{{ 'VERSUS' | translate | uppercase}}</span>
 			</button>
 
 			<div class="animate-flip" style="padding-top: 10px" ng-show="isVersus" ng-hide="!isVersus">
@@ -32,12 +32,12 @@
 		</li>
 		<li class="item home-button">
 			<button class="button button-outline button-block button-rounded button-positive  icon-left ion-help-circled" style="text-align: left;min-width: 200px" ng-click="goToHowPlay()">
-				<span style="padding-left: 10px;font-family: GothamMedium">{{ 'HOW_TO_PLAY' | translate }}</span>
+				<span style="padding-left: 10px;font-family: GothamMedium">{{ 'HOW_TO_PLAY' | translate | uppercase}}</span>
 			</button>
 		</li>
 		<li class="item home-button">
 			<button class="button button-outline button-block button-rounded button-energized  icon-left ion-trophy" style="text-align: left;min-width: 200px" ng-click="goToRanking()">
-				<span style="padding-left: 10px;font-family: GothamMedium">{{ 'TOP_10' | translate }}</span>
+				<span style="padding-left: 10px;font-family: GothamMedium">{{ 'TOP_10' | translate | uppercase}}</span>
 			</button>
 		</li>
 	<!--	<li class="item home-button">
